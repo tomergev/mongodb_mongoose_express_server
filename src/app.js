@@ -26,6 +26,7 @@ app.use(
   jwt({ secret: config.jwt.secret }).unless({
     path: [
       '/auth/signup',
+      '/auth/login',
     ],
   }),
 );

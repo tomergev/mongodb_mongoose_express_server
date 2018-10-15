@@ -1,7 +1,6 @@
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const config = require('../config/');
 const User = require('../models/User');
+const { signToken } = require('../services/jwt/');
 
 module.exports = {
   getAll(req, res, next) {
@@ -16,7 +15,7 @@ module.exports = {
     }
   },
 
-  async post(req, res, next) {
+  async create(req, res, next) {
     try {
       const {
         email,
@@ -36,15 +35,10 @@ module.exports = {
         });
       });
 
-      const token = jwt.sign({ id: user._id }, config.jwt.secret);
-
-      res.json({
-        user,
-        token,
-      });
+      const token = signToken(user.id);
+      res.json({ user, token });
     } catch (err) {
       next(err);
     }
   },
-
 };

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { MongoClient } = require('mongodb');
 const collections = require('./models/');
-const winston = require('./utils/winston');
+// const winston = require('./utils/winston');
 
 const ipAddress = 'mongodb://127.0.0.1';
 const mongoDbUrl = `${ipAddress}:27017`;
@@ -13,7 +13,7 @@ const mongoConnectOptions = {
 module.exports = () => {
   MongoClient.connect(mongoDbUrl, mongoConnectOptions, (mongoConnectErr, client) => {
     if (mongoConnectErr) {
-      winston.error(mongoConnectErr);
+      // winston.error(mongoConnectErr);
       throw mongoConnectErr;
     }
 
@@ -24,7 +24,7 @@ module.exports = () => {
 
     collections.forEach((collection) => {
       whiteblock.createCollection(collection, (err) => {
-        if (err) winston.error(err);
+        // if (err) winston.error(err);
       });
     });
 

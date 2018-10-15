@@ -1,0 +1,753 @@
+{ ValidationError: User validation failed: email: Path `email` is required.
+    at ValidationError.inspect (/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/error/validation.js:59:24)
+    at formatValue (util.js:467:31)
+    at inspect (util.js:328:10)
+    at Format.module.exports.format [as transform] (/home/tomer/whiteblock-mongodb/node_modules/logform/pretty-print.js:14:19)
+    at Format.info [as transform] (/home/tomer/whiteblock-mongodb/node_modules/logform/combine.js:20:24)
+    at DerivedLogger._transform (/home/tomer/whiteblock-mongodb/node_modules/winston/lib/winston/logger.js:235:29)
+    at DerivedLogger.Transform._read (/home/tomer/whiteblock-mongodb/node_modules/readable-stream/lib/_stream_transform.js:184:10)
+    at DerivedLogger.Transform._write (/home/tomer/whiteblock-mongodb/node_modules/readable-stream/lib/_stream_transform.js:172:83)
+    at doWrite (/home/tomer/whiteblock-mongodb/node_modules/readable-stream/lib/_stream_writable.js:428:64)
+    at writeOrBuffer (/home/tomer/whiteblock-mongodb/node_modules/readable-stream/lib/_stream_writable.js:417:5)
+    at DerivedLogger.Writable.write (/home/tomer/whiteblock-mongodb/node_modules/readable-stream/lib/_stream_writable.js:334:11)
+    at DerivedLogger.(anonymous function).args [as error] (/home/tomer/whiteblock-mongodb/node_modules/winston/lib/winston/create-logger.js:54:16)
+    at errorHandling (/home/tomer/whiteblock-mongodb/src/app.js:30:11)
+    at Layer.handle_error (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/layer.js:71:5)
+    at trim_prefix (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:315:13)
+    at /home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:284:7
+  errors:
+   { email:
+      { ValidatorError: Path `email` is required.
+          at new ValidatorError (/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/error/validator.js:29:11)
+          at validate (/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/schematype.js:838:13)
+          at /home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/schematype.js:887:11
+          at Array.forEach (<anonymous>)
+          at SchemaString.SchemaType.doValidate (/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/schematype.js:847:19)
+          at /home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/document.js:1844:9
+          at process._tickCallback (internal/process/next_tick.js:61:11)
+        message: 'Path `email` is required.',
+        name: 'ValidatorError',
+        properties:
+         { validator: [Function],
+           message: 'Path `email` is required.',
+           type: 'required',
+           path: 'email',
+           value: undefined },
+        kind: 'required',
+        path: 'email',
+        value: undefined,
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'User validation failed',
+  name: 'ValidationError',
+  level: 'error',
+  timestamp: '2018-10-15T20:46:15.732Z',
+  [Symbol(level)]: 'error',
+  [Symbol(message)]:
+   '{"errors":{"email":{"message":"Path `email` is required.","name":"ValidatorError","properties":{"message":"Path `email` is required.","type":"required","path":"email"},"kind":"required","path":"email","$isValidatorError":true}},"_message":"User validation failed","message":"User validation failed: email: Path `email` is required.","name":"ValidationError","level":"error"}' }
+{ message:
+   '::1 - - [15/Oct/2018:20:46:15 +0000] "POST /users/ HTTP/1.1" 400 492 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"\n',
+  level: 'info',
+  timestamp: '2018-10-15T20:46:15.737Z',
+  [Symbol(level)]: 'info',
+  [Symbol(message)]:
+   '{"message":"::1 - - [15/Oct/2018:20:46:15 +0000] \\"POST /users/ HTTP/1.1\\" 400 492 \\"-\\" \\"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36\\"\\n","level":"info"}' }
+{ ValidationError: User validation failed: email: Path `email` is required.
+    at ValidationError.inspect (/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/error/validation.js:59:24)
+    at formatValue (util.js:467:31)
+    at inspect (util.js:328:10)
+    at Format.module.exports.format [as transform] (/home/tomer/whiteblock-mongodb/node_modules/logform/pretty-print.js:14:19)
+    at Format.info [as transform] (/home/tomer/whiteblock-mongodb/node_modules/logform/combine.js:20:24)
+    at DerivedLogger._transform (/home/tomer/whiteblock-mongodb/node_modules/winston/lib/winston/logger.js:235:29)
+    at DerivedLogger.Transform._read (/home/tomer/whiteblock-mongodb/node_modules/readable-stream/lib/_stream_transform.js:184:10)
+    at DerivedLogger.Transform._write (/home/tomer/whiteblock-mongodb/node_modules/readable-stream/lib/_stream_transform.js:172:83)
+    at doWrite (/home/tomer/whiteblock-mongodb/node_modules/readable-stream/lib/_stream_writable.js:428:64)
+    at writeOrBuffer (/home/tomer/whiteblock-mongodb/node_modules/readable-stream/lib/_stream_writable.js:417:5)
+    at DerivedLogger.Writable.write (/home/tomer/whiteblock-mongodb/node_modules/readable-stream/lib/_stream_writable.js:334:11)
+    at DerivedLogger.(anonymous function).args [as error] (/home/tomer/whiteblock-mongodb/node_modules/winston/lib/winston/create-logger.js:54:16)
+    at errorHandling (/home/tomer/whiteblock-mongodb/src/app.js:30:11)
+    at Layer.handle_error (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/layer.js:71:5)
+    at trim_prefix (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:315:13)
+    at /home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:284:7
+  errors:
+   { email:
+      { ValidatorError: Path `email` is required.
+          at new ValidatorError (/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/error/validator.js:29:11)
+          at validate (/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/schematype.js:838:13)
+          at /home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/schematype.js:887:11
+          at Array.forEach (<anonymous>)
+          at SchemaString.SchemaType.doValidate (/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/schematype.js:847:19)
+          at /home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/document.js:1844:9
+          at process._tickCallback (internal/process/next_tick.js:61:11)
+        message: 'Path `email` is required.',
+        name: 'ValidatorError',
+        properties:
+         { validator: [Function],
+           message: 'Path `email` is required.',
+           type: 'required',
+           path: 'email',
+           value: undefined },
+        kind: 'required',
+        path: 'email',
+        value: undefined,
+        reason: undefined,
+        '$isValidatorError': true } },
+  _message: 'User validation failed',
+  name: 'ValidationError',
+  level: 'error',
+  timestamp: '2018-10-15T20:47:05.470Z',
+  [Symbol(level)]: 'error',
+  [Symbol(message)]:
+   '{"errors":{"email":{"message":"Path `email` is required.","name":"ValidatorError","properties":{"message":"Path `email` is required.","type":"required","path":"email"},"kind":"required","path":"email","$isValidatorError":true}},"_message":"User validation failed","message":"User validation failed: email: Path `email` is required.","name":"ValidationError","level":"error"}' }
+{ message:
+   '::1 - - [15/Oct/2018:20:47:05 +0000] "POST /users/ HTTP/1.1" 400 509 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"\n',
+  level: 'info',
+  timestamp: '2018-10-15T20:47:05.476Z',
+  [Symbol(level)]: 'info',
+  [Symbol(message)]:
+   '{"message":"::1 - - [15/Oct/2018:20:47:05 +0000] \\"POST /users/ HTTP/1.1\\" 400 509 \\"-\\" \\"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36\\"\\n","level":"info"}' }
+{ UnauthorizedError: No authorization token was found
+    at middleware (/home/tomer/whiteblock-mongodb/node_modules/express-jwt/lib/index.js:76:21)
+    at /home/tomer/whiteblock-mongodb/node_modules/express-unless/index.js:47:5
+    at Layer.handle [as handle_request] (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:317:13)
+    at /home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:275:10)
+    at logger (/home/tomer/whiteblock-mongodb/node_modules/morgan/index.js:144:5)
+    at Layer.handle [as handle_request] (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:317:13)
+    at /home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:275:10)
+    at jsonParser (/home/tomer/whiteblock-mongodb/node_modules/body-parser/lib/types/json.js:101:7)
+    at Layer.handle [as handle_request] (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:317:13)
+  name: 'UnauthorizedError',
+  message: 'No authorization token was found',
+  code: 'credentials_required',
+  status: 401,
+  inner: { message: 'No authorization token was found' },
+  level: 'error',
+  timestamp: '2018-10-15T21:47:33.821Z',
+  [Symbol(level)]: 'error',
+  [Symbol(message)]:
+   '{"name":"UnauthorizedError","message":"No authorization token was found","code":"credentials_required","status":401,"inner":{"message":"No authorization token was found"},"level":"error"}' }
+{ message:
+   '::1 - - [15/Oct/2018:21:47:33 +0000] "POST /signin/ HTTP/1.1" 401 262 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"\n',
+  level: 'info',
+  timestamp: '2018-10-15T21:47:33.827Z',
+  [Symbol(level)]: 'info',
+  [Symbol(message)]:
+   '{"message":"::1 - - [15/Oct/2018:21:47:33 +0000] \\"POST /signin/ HTTP/1.1\\" 401 262 \\"-\\" \\"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36\\"\\n","level":"info"}' }
+{ UnauthorizedError: No authorization token was found
+    at middleware (/home/tomer/whiteblock-mongodb/node_modules/express-jwt/lib/index.js:76:21)
+    at /home/tomer/whiteblock-mongodb/node_modules/express-unless/index.js:47:5
+    at Layer.handle [as handle_request] (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:317:13)
+    at /home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:275:10)
+    at logger (/home/tomer/whiteblock-mongodb/node_modules/morgan/index.js:144:5)
+    at Layer.handle [as handle_request] (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:317:13)
+    at /home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:275:10)
+    at jsonParser (/home/tomer/whiteblock-mongodb/node_modules/body-parser/lib/types/json.js:101:7)
+    at Layer.handle [as handle_request] (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:317:13)
+  name: 'UnauthorizedError',
+  message: 'No authorization token was found',
+  code: 'credentials_required',
+  status: 401,
+  inner: { message: 'No authorization token was found' },
+  level: 'error',
+  timestamp: '2018-10-15T21:48:27.176Z',
+  [Symbol(level)]: 'error',
+  [Symbol(message)]:
+   '{"name":"UnauthorizedError","message":"No authorization token was found","code":"credentials_required","status":401,"inner":{"message":"No authorization token was found"},"level":"error"}' }
+{ message:
+   '::1 - - [15/Oct/2018:21:48:27 +0000] "POST /auth/signin/ HTTP/1.1" 401 262 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"\n',
+  level: 'info',
+  timestamp: '2018-10-15T21:48:27.177Z',
+  [Symbol(level)]: 'info',
+  [Symbol(message)]:
+   '{"message":"::1 - - [15/Oct/2018:21:48:27 +0000] \\"POST /auth/signin/ HTTP/1.1\\" 401 262 \\"-\\" \\"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36\\"\\n","level":"info"}' }
+{ UnauthorizedError: No authorization token was found
+    at middleware (/home/tomer/whiteblock-mongodb/node_modules/express-jwt/lib/index.js:76:21)
+    at /home/tomer/whiteblock-mongodb/node_modules/express-unless/index.js:47:5
+    at Layer.handle [as handle_request] (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:317:13)
+    at /home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:275:10)
+    at logger (/home/tomer/whiteblock-mongodb/node_modules/morgan/index.js:144:5)
+    at Layer.handle [as handle_request] (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:317:13)
+    at /home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:275:10)
+    at jsonParser (/home/tomer/whiteblock-mongodb/node_modules/body-parser/lib/types/json.js:101:7)
+    at Layer.handle [as handle_request] (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:317:13)
+  name: 'UnauthorizedError',
+  message: 'No authorization token was found',
+  code: 'credentials_required',
+  status: 401,
+  inner: { message: 'No authorization token was found' },
+  level: 'error',
+  timestamp: '2018-10-15T21:49:16.620Z',
+  [Symbol(level)]: 'error',
+  [Symbol(message)]:
+   '{"name":"UnauthorizedError","message":"No authorization token was found","code":"credentials_required","status":401,"inner":{"message":"No authorization token was found"},"level":"error"}' }
+{ message:
+   '::1 - - [15/Oct/2018:21:49:16 +0000] "POST /auth/signin/ HTTP/1.1" 401 281 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"\n',
+  level: 'info',
+  timestamp: '2018-10-15T21:49:16.626Z',
+  [Symbol(level)]: 'info',
+  [Symbol(message)]:
+   '{"message":"::1 - - [15/Oct/2018:21:49:16 +0000] \\"POST /auth/signin/ HTTP/1.1\\" 401 281 \\"-\\" \\"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36\\"\\n","level":"info"}' }
+{ message:
+   '::1 - - [15/Oct/2018:21:50:00 +0000] "POST /auth/signin/ HTTP/1.1" 404 152 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"\n',
+  level: 'info',
+  timestamp: '2018-10-15T21:50:00.381Z',
+  [Symbol(level)]: 'info',
+  [Symbol(message)]:
+   '{"message":"::1 - - [15/Oct/2018:21:50:00 +0000] \\"POST /auth/signin/ HTTP/1.1\\" 404 152 \\"-\\" \\"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36\\"\\n","level":"info"}' }
+{ message:
+   '::1 - - [15/Oct/2018:21:51:01 +0000] "POST /auth/signin/ HTTP/1.1" 404 152 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"\n',
+  level: 'info',
+  timestamp: '2018-10-15T21:51:01.784Z',
+  [Symbol(level)]: 'info',
+  [Symbol(message)]:
+   '{"message":"::1 - - [15/Oct/2018:21:51:01 +0000] \\"POST /auth/signin/ HTTP/1.1\\" 404 152 \\"-\\" \\"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36\\"\\n","level":"info"}' }
+{ UnauthorizedError: No authorization token was found
+    at middleware (/home/tomer/whiteblock-mongodb/node_modules/express-jwt/lib/index.js:76:21)
+    at /home/tomer/whiteblock-mongodb/node_modules/express-unless/index.js:47:5
+    at Layer.handle [as handle_request] (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:317:13)
+    at /home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:275:10)
+    at logger (/home/tomer/whiteblock-mongodb/node_modules/morgan/index.js:144:5)
+    at Layer.handle [as handle_request] (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:317:13)
+    at /home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:275:10)
+    at jsonParser (/home/tomer/whiteblock-mongodb/node_modules/body-parser/lib/types/json.js:101:7)
+    at Layer.handle [as handle_request] (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:317:13)
+  name: 'UnauthorizedError',
+  message: 'No authorization token was found',
+  code: 'credentials_required',
+  status: 401,
+  inner: { message: 'No authorization token was found' },
+  level: 'error',
+  timestamp: '2018-10-15T21:51:47.816Z',
+  [Symbol(level)]: 'error',
+  [Symbol(message)]:
+   '{"name":"UnauthorizedError","message":"No authorization token was found","code":"credentials_required","status":401,"inner":{"message":"No authorization token was found"},"level":"error"}' }
+{ message:
+   '::1 - - [15/Oct/2018:21:51:47 +0000] "POST /auth/signup/ HTTP/1.1" 401 281 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"\n',
+  level: 'info',
+  timestamp: '2018-10-15T21:51:47.822Z',
+  [Symbol(level)]: 'info',
+  [Symbol(message)]:
+   '{"message":"::1 - - [15/Oct/2018:21:51:47 +0000] \\"POST /auth/signup/ HTTP/1.1\\" 401 281 \\"-\\" \\"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36\\"\\n","level":"info"}' }
+{ error:
+   Error: A user already exists with the email, tom@aol.com. Please create a user with a different email or sign-in with this email
+       at User.find (/home/tomer/whiteblock-mongodb/src/controllers/auth.js:12:17)
+       at /home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/model.js:4499:16
+       at cb (/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/query.js:1732:14)
+       at result (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:414:17)
+       at executeCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:406:9)
+       at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:128:55)
+       at cursor.close (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js:211:62)
+       at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:128:55)
+       at completeClose (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:893:14)
+       at Cursor.close (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:912:10)
+       at cursor._next (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js:211:23)
+       at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:203:5)
+       at _setCursorNotifiedImpl (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:561:38)
+       at self._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:569:46)
+       at Cursor._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:194:5)
+       at Cursor._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:226:59),
+  level: 'error',
+  message:
+   'uncaughtException: A user already exists with the email, tom@aol.com. Please create a user with a different email or sign-in with this email\nError: A user already exists with the email, tom@aol.com. Please create a user with a different email or sign-in with this email\n    at User.find (/home/tomer/whiteblock-mongodb/src/controllers/auth.js:12:17)\n    at /home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/model.js:4499:16\n    at cb (/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/query.js:1732:14)\n    at result (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:414:17)\n    at executeCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:406:9)\n    at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:128:55)\n    at cursor.close (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js:211:62)\n    at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:128:55)\n    at completeClose (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:893:14)\n    at Cursor.close (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:912:10)\n    at cursor._next (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js:211:23)\n    at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:203:5)\n    at _setCursorNotifiedImpl (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:561:38)\n    at self._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:569:46)\n    at Cursor._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:194:5)\n    at Cursor._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:226:59)',
+  stack:
+   'Error: A user already exists with the email, tom@aol.com. Please create a user with a different email or sign-in with this email\n    at User.find (/home/tomer/whiteblock-mongodb/src/controllers/auth.js:12:17)\n    at /home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/model.js:4499:16\n    at cb (/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/query.js:1732:14)\n    at result (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:414:17)\n    at executeCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:406:9)\n    at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:128:55)\n    at cursor.close (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js:211:62)\n    at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:128:55)\n    at completeClose (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:893:14)\n    at Cursor.close (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:912:10)\n    at cursor._next (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js:211:23)\n    at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:203:5)\n    at _setCursorNotifiedImpl (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:561:38)\n    at self._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:569:46)\n    at Cursor._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:194:5)\n    at Cursor._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:226:59)',
+  exception: true,
+  date: 'Mon Oct 15 2018 14:52:21 GMT-0700 (Pacific Daylight Time)',
+  process:
+   { pid: 1832,
+     uid: 1000,
+     gid: 1000,
+     cwd: '/home/tomer/whiteblock-mongodb',
+     execPath: '/home/tomer/.nvm/versions/node/v10.7.0/bin/node',
+     version: 'v10.7.0',
+     argv:
+      [ '/home/tomer/.nvm/versions/node/v10.7.0/bin/node',
+        '/home/tomer/whiteblock-mongodb/src/app' ],
+     memoryUsage:
+      { rss: 54071296,
+        heapTotal: 24936448,
+        heapUsed: 20224624,
+        external: 36090928 } },
+  os:
+   { loadavg: [ 0.7080078125, 0.560546875, 0.51025390625 ],
+     uptime: 22381 },
+  trace:
+   [ { column: 17,
+       file: '/home/tomer/whiteblock-mongodb/src/controllers/auth.js',
+       function: 'User.find',
+       line: 12,
+       method: 'find',
+       native: false },
+     { column: 16,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/model.js',
+       function: null,
+       line: 4499,
+       method: null,
+       native: false },
+     { column: 14,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/query.js',
+       function: 'cb',
+       line: 1732,
+       method: null,
+       native: false },
+     { column: 17,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js',
+       function: 'result',
+       line: 414,
+       method: null,
+       native: false },
+     { column: 9,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js',
+       function: 'executeCallback',
+       line: 406,
+       method: null,
+       native: false },
+     { column: 55,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js',
+       function: 'handleCallback',
+       line: 128,
+       method: null,
+       native: false },
+     { column: 62,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js',
+       function: 'cursor.close',
+       line: 211,
+       method: 'close',
+       native: false },
+     { column: 55,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js',
+       function: 'handleCallback',
+       line: 128,
+       method: null,
+       native: false },
+     { column: 14,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js',
+       function: 'completeClose',
+       line: 893,
+       method: null,
+       native: false },
+     { column: 10,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js',
+       function: 'Cursor.close',
+       line: 912,
+       method: 'close',
+       native: false },
+     { column: 23,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js',
+       function: 'cursor._next',
+       line: 211,
+       method: '_next',
+       native: false },
+     { column: 5,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js',
+       function: 'handleCallback',
+       line: 203,
+       method: null,
+       native: false },
+     { column: 38,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js',
+       function: '_setCursorNotifiedImpl',
+       line: 561,
+       method: null,
+       native: false },
+     { column: 46,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js',
+       function: 'self._endSession',
+       line: 569,
+       method: '_endSession',
+       native: false },
+     { column: 5,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js',
+       function: 'Cursor._endSession',
+       line: 194,
+       method: '_endSession',
+       native: false },
+     { column: 59,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js',
+       function: 'Cursor._endSession',
+       line: 226,
+       method: '_endSession',
+       native: false } ],
+  timestamp: '2018-10-15T21:52:21.033Z',
+  [Symbol(level)]: 'error',
+  [Symbol(message)]:
+   '{"error":{},"level":"error","message":"uncaughtException: A user already exists with the email, tom@aol.com. Please create a user with a different email or sign-in with this email\\nError: A user already exists with the email, tom@aol.com. Please create a user with a different email or sign-in with this email\\n    at User.find (/home/tomer/whiteblock-mongodb/src/controllers/auth.js:12:17)\\n    at /home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/model.js:4499:16\\n    at cb (/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/query.js:1732:14)\\n    at result (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:414:17)\\n    at executeCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:406:9)\\n    at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:128:55)\\n    at cursor.close (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js:211:62)\\n    at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:128:55)\\n    at completeClose (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:893:14)\\n    at Cursor.close (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:912:10)\\n    at cursor._next (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js:211:23)\\n    at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:203:5)\\n    at _setCursorNotifiedImpl (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:561:38)\\n    at self._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:569:46)\\n    at Cursor._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:194:5)\\n    at Cursor._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:226:59)","stack":"Error: A user already exists with the email, tom@aol.com. Please create a user with a different email or sign-in with this email\\n    at User.find (/home/tomer/whiteblock-mongodb/src/controllers/auth.js:12:17)\\n    at /home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/model.js:4499:16\\n    at cb (/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/query.js:1732:14)\\n    at result (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:414:17)\\n    at executeCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:406:9)\\n    at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:128:55)\\n    at cursor.close (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js:211:62)\\n    at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:128:55)\\n    at completeClose (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:893:14)\\n    at Cursor.close (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:912:10)\\n    at cursor._next (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js:211:23)\\n    at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:203:5)\\n    at _setCursorNotifiedImpl (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:561:38)\\n    at self._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:569:46)\\n    at Cursor._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:194:5)\\n    at Cursor._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:226:59)","exception":true,"date":"Mon Oct 15 2018 14:52:21 GMT-0700 (Pacific Daylight Time)","process":{"pid":1832,"uid":1000,"gid":1000,"cwd":"/home/tomer/whiteblock-mongodb","execPath":"/home/tomer/.nvm/versions/node/v10.7.0/bin/node","version":"v10.7.0","argv":["/home/tomer/.nvm/versions/node/v10.7.0/bin/node","/home/tomer/whiteblock-mongodb/src/app"],"memoryUsage":{"rss":54071296,"heapTotal":24936448,"heapUsed":20224624,"external":36090928}},"os":{"loadavg":[0.7080078125,0.560546875,0.51025390625],"uptime":22381},"trace":[{"column":17,"file":"/home/tomer/whiteblock-mongodb/src/controllers/auth.js","function":"User.find","line":12,"method":"find","native":false},{"column":16,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/model.js","function":null,"line":4499,"method":null,"native":false},{"column":14,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/query.js","function":"cb","line":1732,"method":null,"native":false},{"column":17,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js","function":"result","line":414,"method":null,"native":false},{"column":9,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js","function":"executeCallback","line":406,"method":null,"native":false},{"column":55,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js","function":"handleCallback","line":128,"method":null,"native":false},{"column":62,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js","function":"cursor.close","line":211,"method":"close","native":false},{"column":55,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js","function":"handleCallback","line":128,"method":null,"native":false},{"column":14,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js","function":"completeClose","line":893,"method":null,"native":false},{"column":10,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js","function":"Cursor.close","line":912,"method":"close","native":false},{"column":23,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js","function":"cursor._next","line":211,"method":"_next","native":false},{"column":5,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js","function":"handleCallback","line":203,"method":null,"native":false},{"column":38,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js","function":"_setCursorNotifiedImpl","line":561,"method":null,"native":false},{"column":46,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js","function":"self._endSession","line":569,"method":"_endSession","native":false},{"column":5,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js","function":"Cursor._endSession","line":194,"method":"_endSession","native":false},{"column":59,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js","function":"Cursor._endSession","line":226,"method":"_endSession","native":false}]}' }
+{ UnauthorizedError: No authorization token was found
+    at middleware (/home/tomer/whiteblock-mongodb/node_modules/express-jwt/lib/index.js:76:21)
+    at /home/tomer/whiteblock-mongodb/node_modules/express-unless/index.js:47:5
+    at Layer.handle [as handle_request] (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:317:13)
+    at /home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:275:10)
+    at logger (/home/tomer/whiteblock-mongodb/node_modules/morgan/index.js:144:5)
+    at Layer.handle [as handle_request] (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:317:13)
+    at /home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:275:10)
+    at jsonParser (/home/tomer/whiteblock-mongodb/node_modules/body-parser/lib/types/json.js:110:7)
+    at Layer.handle [as handle_request] (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:317:13)
+  name: 'UnauthorizedError',
+  message: 'No authorization token was found',
+  code: 'credentials_required',
+  status: 401,
+  inner: { message: 'No authorization token was found' },
+  level: 'error',
+  timestamp: '2018-10-15T21:52:43.384Z',
+  [Symbol(level)]: 'error',
+  [Symbol(message)]:
+   '{"name":"UnauthorizedError","message":"No authorization token was found","code":"credentials_required","status":401,"inner":{"message":"No authorization token was found"},"level":"error"}' }
+{ message:
+   '::1 - - [15/Oct/2018:21:52:43 +0000] "GET /users HTTP/1.1" 401 281 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"\n',
+  level: 'info',
+  timestamp: '2018-10-15T21:52:43.385Z',
+  [Symbol(level)]: 'info',
+  [Symbol(message)]:
+   '{"message":"::1 - - [15/Oct/2018:21:52:43 +0000] \\"GET /users HTTP/1.1\\" 401 281 \\"-\\" \\"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36\\"\\n","level":"info"}' }
+{ error:
+   Error: A user already exists with the email, tom@aol.com. Please create a user with a different email or sign-in with this email
+       at User.find (/home/tomer/whiteblock-mongodb/src/controllers/auth.js:13:17)
+       at /home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/model.js:4499:16
+       at cb (/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/query.js:1732:14)
+       at result (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:414:17)
+       at executeCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:406:9)
+       at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:128:55)
+       at cursor.close (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js:211:62)
+       at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:128:55)
+       at completeClose (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:893:14)
+       at Cursor.close (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:912:10)
+       at cursor._next (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js:211:23)
+       at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:203:5)
+       at _setCursorNotifiedImpl (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:561:38)
+       at self._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:569:46)
+       at Cursor._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:194:5)
+       at Cursor._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:226:59),
+  level: 'error',
+  message:
+   'uncaughtException: A user already exists with the email, tom@aol.com. Please create a user with a different email or sign-in with this email\nError: A user already exists with the email, tom@aol.com. Please create a user with a different email or sign-in with this email\n    at User.find (/home/tomer/whiteblock-mongodb/src/controllers/auth.js:13:17)\n    at /home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/model.js:4499:16\n    at cb (/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/query.js:1732:14)\n    at result (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:414:17)\n    at executeCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:406:9)\n    at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:128:55)\n    at cursor.close (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js:211:62)\n    at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:128:55)\n    at completeClose (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:893:14)\n    at Cursor.close (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:912:10)\n    at cursor._next (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js:211:23)\n    at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:203:5)\n    at _setCursorNotifiedImpl (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:561:38)\n    at self._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:569:46)\n    at Cursor._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:194:5)\n    at Cursor._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:226:59)',
+  stack:
+   'Error: A user already exists with the email, tom@aol.com. Please create a user with a different email or sign-in with this email\n    at User.find (/home/tomer/whiteblock-mongodb/src/controllers/auth.js:13:17)\n    at /home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/model.js:4499:16\n    at cb (/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/query.js:1732:14)\n    at result (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:414:17)\n    at executeCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:406:9)\n    at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:128:55)\n    at cursor.close (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js:211:62)\n    at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:128:55)\n    at completeClose (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:893:14)\n    at Cursor.close (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:912:10)\n    at cursor._next (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js:211:23)\n    at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:203:5)\n    at _setCursorNotifiedImpl (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:561:38)\n    at self._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:569:46)\n    at Cursor._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:194:5)\n    at Cursor._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:226:59)',
+  exception: true,
+  date: 'Mon Oct 15 2018 14:53:41 GMT-0700 (Pacific Daylight Time)',
+  process:
+   { pid: 2154,
+     uid: 1000,
+     gid: 1000,
+     cwd: '/home/tomer/whiteblock-mongodb',
+     execPath: '/home/tomer/.nvm/versions/node/v10.7.0/bin/node',
+     version: 'v10.7.0',
+     argv:
+      [ '/home/tomer/.nvm/versions/node/v10.7.0/bin/node',
+        '/home/tomer/whiteblock-mongodb/src/app' ],
+     memoryUsage:
+      { rss: 51343360,
+        heapTotal: 23363584,
+        heapUsed: 19873080,
+        external: 36175860 } },
+  os:
+   { loadavg: [ 1.193359375, 0.69140625, 0.556640625 ],
+     uptime: 22462 },
+  trace:
+   [ { column: 17,
+       file: '/home/tomer/whiteblock-mongodb/src/controllers/auth.js',
+       function: 'User.find',
+       line: 13,
+       method: 'find',
+       native: false },
+     { column: 16,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/model.js',
+       function: null,
+       line: 4499,
+       method: null,
+       native: false },
+     { column: 14,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/query.js',
+       function: 'cb',
+       line: 1732,
+       method: null,
+       native: false },
+     { column: 17,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js',
+       function: 'result',
+       line: 414,
+       method: null,
+       native: false },
+     { column: 9,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js',
+       function: 'executeCallback',
+       line: 406,
+       method: null,
+       native: false },
+     { column: 55,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js',
+       function: 'handleCallback',
+       line: 128,
+       method: null,
+       native: false },
+     { column: 62,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js',
+       function: 'cursor.close',
+       line: 211,
+       method: 'close',
+       native: false },
+     { column: 55,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js',
+       function: 'handleCallback',
+       line: 128,
+       method: null,
+       native: false },
+     { column: 14,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js',
+       function: 'completeClose',
+       line: 893,
+       method: null,
+       native: false },
+     { column: 10,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js',
+       function: 'Cursor.close',
+       line: 912,
+       method: 'close',
+       native: false },
+     { column: 23,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js',
+       function: 'cursor._next',
+       line: 211,
+       method: '_next',
+       native: false },
+     { column: 5,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js',
+       function: 'handleCallback',
+       line: 203,
+       method: null,
+       native: false },
+     { column: 38,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js',
+       function: '_setCursorNotifiedImpl',
+       line: 561,
+       method: null,
+       native: false },
+     { column: 46,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js',
+       function: 'self._endSession',
+       line: 569,
+       method: '_endSession',
+       native: false },
+     { column: 5,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js',
+       function: 'Cursor._endSession',
+       line: 194,
+       method: '_endSession',
+       native: false },
+     { column: 59,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js',
+       function: 'Cursor._endSession',
+       line: 226,
+       method: '_endSession',
+       native: false } ],
+  timestamp: '2018-10-15T21:53:41.888Z',
+  [Symbol(level)]: 'error',
+  [Symbol(message)]:
+   '{"error":{},"level":"error","message":"uncaughtException: A user already exists with the email, tom@aol.com. Please create a user with a different email or sign-in with this email\\nError: A user already exists with the email, tom@aol.com. Please create a user with a different email or sign-in with this email\\n    at User.find (/home/tomer/whiteblock-mongodb/src/controllers/auth.js:13:17)\\n    at /home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/model.js:4499:16\\n    at cb (/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/query.js:1732:14)\\n    at result (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:414:17)\\n    at executeCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:406:9)\\n    at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:128:55)\\n    at cursor.close (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js:211:62)\\n    at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:128:55)\\n    at completeClose (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:893:14)\\n    at Cursor.close (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:912:10)\\n    at cursor._next (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js:211:23)\\n    at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:203:5)\\n    at _setCursorNotifiedImpl (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:561:38)\\n    at self._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:569:46)\\n    at Cursor._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:194:5)\\n    at Cursor._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:226:59)","stack":"Error: A user already exists with the email, tom@aol.com. Please create a user with a different email or sign-in with this email\\n    at User.find (/home/tomer/whiteblock-mongodb/src/controllers/auth.js:13:17)\\n    at /home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/model.js:4499:16\\n    at cb (/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/query.js:1732:14)\\n    at result (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:414:17)\\n    at executeCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:406:9)\\n    at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:128:55)\\n    at cursor.close (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js:211:62)\\n    at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:128:55)\\n    at completeClose (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:893:14)\\n    at Cursor.close (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:912:10)\\n    at cursor._next (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js:211:23)\\n    at handleCallback (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:203:5)\\n    at _setCursorNotifiedImpl (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:561:38)\\n    at self._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:569:46)\\n    at Cursor._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js:194:5)\\n    at Cursor._endSession (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js:226:59)","exception":true,"date":"Mon Oct 15 2018 14:53:41 GMT-0700 (Pacific Daylight Time)","process":{"pid":2154,"uid":1000,"gid":1000,"cwd":"/home/tomer/whiteblock-mongodb","execPath":"/home/tomer/.nvm/versions/node/v10.7.0/bin/node","version":"v10.7.0","argv":["/home/tomer/.nvm/versions/node/v10.7.0/bin/node","/home/tomer/whiteblock-mongodb/src/app"],"memoryUsage":{"rss":51343360,"heapTotal":23363584,"heapUsed":19873080,"external":36175860}},"os":{"loadavg":[1.193359375,0.69140625,0.556640625],"uptime":22462},"trace":[{"column":17,"file":"/home/tomer/whiteblock-mongodb/src/controllers/auth.js","function":"User.find","line":13,"method":"find","native":false},{"column":16,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/model.js","function":null,"line":4499,"method":null,"native":false},{"column":14,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/query.js","function":"cb","line":1732,"method":null,"native":false},{"column":17,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js","function":"result","line":414,"method":null,"native":false},{"column":9,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js","function":"executeCallback","line":406,"method":null,"native":false},{"column":55,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js","function":"handleCallback","line":128,"method":null,"native":false},{"column":62,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js","function":"cursor.close","line":211,"method":"close","native":false},{"column":55,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js","function":"handleCallback","line":128,"method":null,"native":false},{"column":14,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js","function":"completeClose","line":893,"method":null,"native":false},{"column":10,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js","function":"Cursor.close","line":912,"method":"close","native":false},{"column":23,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/cursor_ops.js","function":"cursor._next","line":211,"method":"_next","native":false},{"column":5,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js","function":"handleCallback","line":203,"method":null,"native":false},{"column":38,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js","function":"_setCursorNotifiedImpl","line":561,"method":null,"native":false},{"column":46,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js","function":"self._endSession","line":569,"method":"_endSession","native":false},{"column":5,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js","function":"Cursor._endSession","line":194,"method":"_endSession","native":false},{"column":59,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/cursor.js","function":"Cursor._endSession","line":226,"method":"_endSession","native":false}]}' }
+{ error:
+   Error: A user already exists with the email, tom@aol.com. Please create a user with a different email or sign-in with this email
+       at User.find (/home/tomer/whiteblock-mongodb/src/controllers/auth.js:13:17)
+       at /home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/model.js:4499:16
+       at process.nextTick (/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/helpers/query/completeMany.js:35:39)
+       at process._tickCallback (internal/process/next_tick.js:61:11),
+  level: 'error',
+  message:
+   'uncaughtException: A user already exists with the email, tom@aol.com. Please create a user with a different email or sign-in with this email\nError: A user already exists with the email, tom@aol.com. Please create a user with a different email or sign-in with this email\n    at User.find (/home/tomer/whiteblock-mongodb/src/controllers/auth.js:13:17)\n    at /home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/model.js:4499:16\n    at process.nextTick (/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/helpers/query/completeMany.js:35:39)\n    at process._tickCallback (internal/process/next_tick.js:61:11)',
+  stack:
+   'Error: A user already exists with the email, tom@aol.com. Please create a user with a different email or sign-in with this email\n    at User.find (/home/tomer/whiteblock-mongodb/src/controllers/auth.js:13:17)\n    at /home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/model.js:4499:16\n    at process.nextTick (/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/helpers/query/completeMany.js:35:39)\n    at process._tickCallback (internal/process/next_tick.js:61:11)',
+  exception: true,
+  date: 'Mon Oct 15 2018 14:54:47 GMT-0700 (Pacific Daylight Time)',
+  process:
+   { pid: 2368,
+     uid: 1000,
+     gid: 1000,
+     cwd: '/home/tomer/whiteblock-mongodb',
+     execPath: '/home/tomer/.nvm/versions/node/v10.7.0/bin/node',
+     version: 'v10.7.0',
+     argv:
+      [ '/home/tomer/.nvm/versions/node/v10.7.0/bin/node',
+        '/home/tomer/whiteblock-mongodb/src/app' ],
+     memoryUsage:
+      { rss: 52404224,
+        heapTotal: 23887872,
+        heapUsed: 19856016,
+        external: 36089548 } },
+  os:
+   { loadavg: [ 0.91259765625, 0.73095703125, 0.580078125 ],
+     uptime: 22527 },
+  trace:
+   [ { column: 17,
+       file: '/home/tomer/whiteblock-mongodb/src/controllers/auth.js',
+       function: 'User.find',
+       line: 13,
+       method: 'find',
+       native: false },
+     { column: 16,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/model.js',
+       function: null,
+       line: 4499,
+       method: null,
+       native: false },
+     { column: 39,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/helpers/query/completeMany.js',
+       function: 'process.nextTick',
+       line: 35,
+       method: 'nextTick',
+       native: false },
+     { column: 11,
+       file: 'internal/process/next_tick.js',
+       function: 'process._tickCallback',
+       line: 61,
+       method: '_tickCallback',
+       native: false } ],
+  timestamp: '2018-10-15T21:54:47.084Z',
+  [Symbol(level)]: 'error',
+  [Symbol(message)]:
+   '{"error":{},"level":"error","message":"uncaughtException: A user already exists with the email, tom@aol.com. Please create a user with a different email or sign-in with this email\\nError: A user already exists with the email, tom@aol.com. Please create a user with a different email or sign-in with this email\\n    at User.find (/home/tomer/whiteblock-mongodb/src/controllers/auth.js:13:17)\\n    at /home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/model.js:4499:16\\n    at process.nextTick (/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/helpers/query/completeMany.js:35:39)\\n    at process._tickCallback (internal/process/next_tick.js:61:11)","stack":"Error: A user already exists with the email, tom@aol.com. Please create a user with a different email or sign-in with this email\\n    at User.find (/home/tomer/whiteblock-mongodb/src/controllers/auth.js:13:17)\\n    at /home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/model.js:4499:16\\n    at process.nextTick (/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/helpers/query/completeMany.js:35:39)\\n    at process._tickCallback (internal/process/next_tick.js:61:11)","exception":true,"date":"Mon Oct 15 2018 14:54:47 GMT-0700 (Pacific Daylight Time)","process":{"pid":2368,"uid":1000,"gid":1000,"cwd":"/home/tomer/whiteblock-mongodb","execPath":"/home/tomer/.nvm/versions/node/v10.7.0/bin/node","version":"v10.7.0","argv":["/home/tomer/.nvm/versions/node/v10.7.0/bin/node","/home/tomer/whiteblock-mongodb/src/app"],"memoryUsage":{"rss":52404224,"heapTotal":23887872,"heapUsed":19856016,"external":36089548}},"os":{"loadavg":[0.91259765625,0.73095703125,0.580078125],"uptime":22527},"trace":[{"column":17,"file":"/home/tomer/whiteblock-mongodb/src/controllers/auth.js","function":"User.find","line":13,"method":"find","native":false},{"column":16,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/model.js","function":null,"line":4499,"method":null,"native":false},{"column":39,"file":"/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/helpers/query/completeMany.js","function":"process.nextTick","line":35,"method":"nextTick","native":false},{"column":11,"file":"internal/process/next_tick.js","function":"process._tickCallback","line":61,"method":"_tickCallback","native":false}]}' }
+{ message:
+   '::1 - - [15/Oct/2018:21:55:14 +0000] "POST /auth/signup HTTP/1.1" 404 151 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"\n',
+  level: 'info',
+  timestamp: '2018-10-15T21:55:14.298Z',
+  [Symbol(level)]: 'info',
+  [Symbol(message)]:
+   '{"message":"::1 - - [15/Oct/2018:21:55:14 +0000] \\"POST /auth/signup HTTP/1.1\\" 404 151 \\"-\\" \\"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36\\"\\n","level":"info"}' }
+{ message:
+   '::1 - - [15/Oct/2018:21:55:31 +0000] "POST /auth/signup HTTP/1.1" 404 151 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"\n',
+  level: 'info',
+  timestamp: '2018-10-15T21:55:31.188Z',
+  [Symbol(level)]: 'info',
+  [Symbol(message)]:
+   '{"message":"::1 - - [15/Oct/2018:21:55:31 +0000] \\"POST /auth/signup HTTP/1.1\\" 404 151 \\"-\\" \\"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36\\"\\n","level":"info"}' }
+{ message: 'here',
+  level: 'error',
+  timestamp: '2018-10-15T22:01:48.603Z',
+  [Symbol(level)]: 'error',
+  [Symbol(message)]: '{"message":"here","level":"error"}' }
+{ message: { msg: true },
+  level: 'error',
+  timestamp: '2018-10-15T22:03:34.210Z',
+  [Symbol(level)]: 'error',
+  [Symbol(message)]: '{"message":{"msg":true},"level":"error"}' }
+{ ReferenceError: Usdfder is not defined
+    at signUp (/home/tomer/whiteblock-mongodb/src/controllers/auth.js:8:7)
+    at Layer.handle [as handle_request] (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/layer.js:95:5)
+    at /home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:174:3)
+    at router (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:317:13)
+    at /home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/tomer/whiteblock-mongodb/node_modules/express/lib/router/index.js:275:10)
+    at jsonParser (/home/tomer/whiteblock-mongodb/node_modules/body-parser/lib/types/json.js:101:7)
+  level: 'error',
+  timestamp: '2018-10-15T22:04:07.015Z',
+  [Symbol(level)]: 'error',
+  [Symbol(message)]: '{"level":"error"}' }
+{ MongoError: E11000 duplicate key error collection: whiteblock.users index: password_1 dup key: { : "tom123" }
+    at Function.create (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/error.js:43:12)
+    at toError (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/utils.js:149:22)
+    at coll.s.topology.insert (/home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb/lib/operations/collection_ops.js:827:39)
+    at /home/tomer/whiteblock-mongodb/node_modules/mongoose/node_modules/mongodb-core/lib/connection/pool.js:532:18
+    at process._tickCallback (internal/process/next_tick.js:61:11)
+  driver: true,
+  name: 'MongoError',
+  index: 0,
+  code: 11000,
+  errmsg:
+   'E11000 duplicate key error collection: whiteblock.users index: password_1 dup key: { : "tom123" }',
+  level: 'error',
+  timestamp: '2018-10-15T22:06:14.517Z',
+  [Symbol(mongoErrorContextSymbol)]: {},
+  [Symbol(level)]: 'error',
+  [Symbol(message)]:
+   '{"driver":true,"name":"MongoError","index":0,"code":11000,"errmsg":"E11000 duplicate key error collection: whiteblock.users index: password_1 dup key: { : \\"tom123\\" }","level":"error"}' }
+{ Error: A user already exists with the email, tom41@aol.com. Please create a user with a different email or sign-in with this email
+    at User.find (/home/tomer/whiteblock-mongodb/src/controllers/auth.js:13:13)
+    at /home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/model.js:4499:16
+    at process.nextTick (/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/helpers/query/completeMany.js:35:39)
+    at process._tickCallback (internal/process/next_tick.js:61:11)
+  level: 'error',
+  timestamp: '2018-10-15T22:09:02.961Z',
+  [Symbol(level)]: 'error',
+  [Symbol(message)]: '{"level":"error"}' }
+{ Error: A user already exists with the email, tom421@aol.com. Please create a user with a different email or sign-in with this email
+    at User.find (/home/tomer/whiteblock-mongodb/src/controllers/auth.js:13:13)
+    at /home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/model.js:4499:16
+    at process.nextTick (/home/tomer/whiteblock-mongodb/node_modules/mongoose/lib/helpers/query/completeMany.js:35:39)
+    at process._tickCallback (internal/process/next_tick.js:61:11)
+  level: 'error',
+  timestamp: '2018-10-15T22:09:12.096Z',
+  [Symbol(level)]: 'error',
+  [Symbol(message)]: '{"level":"error"}' }

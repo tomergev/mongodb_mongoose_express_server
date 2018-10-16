@@ -1,0 +1,11 @@
+const ethers = require('ethers');
+
+const provider = new ethers.providers.JsonRpcProvider('http://127.0.0.1:8545');
+
+const ethersNewBlockListener = (callback) => {
+  provider.on('block', callback);
+};
+
+module.exports = {
+  ethersNewBlockListener,
+};

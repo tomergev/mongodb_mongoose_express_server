@@ -3,13 +3,10 @@ const User = require('../models/User');
 const { signToken } = require('../services/jwt/');
 
 module.exports = {
-  getAll(req, res, next) {
+  async getAll(req, res, next) {
     try {
-      // Passing an empty object to User's find method, get all instances of the user model
-      User.find({}, (err, users) => {
-        if (err) throw err;
-        res.json({ users });
-      });
+      const users = await User.find();
+      res.json({ users });
     } catch (err) {
       next(err);
     }
@@ -28,15 +25,19 @@ module.exports = {
         password: passwordHash,
       };
 
-      const user = await new Promise((resolve, reject) => {
-        User.create(userInfo, (err, userRes) => {
-          if (err) reject(err);
-          resolve(userRes);
-        });
-      });
-
-      const token = signToken(user.id);
+      const user = await User.create(userInfo);
+      const token = signToken(user);
       res.json({ user, token });
+    } catch (err) {
+      next(err);
+    }
+  },
+
+  async delete(req, res, next) {
+    try {
+      const { userId } = req.params;
+      await User.findByIdAndDelete(userId);
+      res.json({ message: `User ${userId} has successfully been deleted` });
     } catch (err) {
       next(err);
     }

@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const { MongoClient } = require('mongodb');
 const collections = require('./models/');
-// const winston = require('./utils/winston');
+// const winston = require('./config/winston');
 
-const ipAddress = 'mongodb://127.0.0.1';
+const ipAddress = `mongodb://${process.env.IP_ADDRESS}`;
 const mongoDbUrl = `${ipAddress}:27017`;
 const mongoConnectOptions = {
   useNewUrlParser: true,

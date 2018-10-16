@@ -8,7 +8,7 @@ require('dotenv').config({ path: './.env' });
 const createDb = require('./db');
 const routes = require('./routes/');
 const config = require('./config/');
-// const winston = require('./utils/winston/');
+// const winston = require('./config/winston/');
 
 const app = express();
 app.use(cors());
@@ -48,7 +48,7 @@ const errorHandling = (err, _req, res, _next) => {
 };
 app.use(errorHandling);
 
-app.listen(3030, (err) => {
+app.listen(process.env.PORT, (err) => {
   if (err) {
     // winston.error(err);
     // https://stackoverflow.com/questions/43147330/what-is-difference-between-method-process-exit1-and-process-exit0-in-node-js

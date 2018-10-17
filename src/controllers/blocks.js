@@ -1,5 +1,5 @@
-const User = require('../models/User');
 const Block = require('../models/Block');
+const Account = require('../models/Account');
 // const winston = require('../config/winston/');
 const { getBlock } = require('../services/web3/');
 const { ethersNewBlockListener } = require('../services/ethers/');
@@ -7,7 +7,9 @@ const { ethersNewBlockListener } = require('../services/ethers/');
 module.exports = {
   async get(req, res, next) {
     try {
-      const userId = req.user.id;
+      const { user } = req;
+      const userId = user.id;
+
       const {
         rangeLow,
         rangeHigh,
@@ -15,11 +17,15 @@ module.exports = {
 
       const query = {
         userId,
-        blockNumber: {
+        chainId: user.chain.id,
+      };
+
+      if (rangeLow || rangeHigh) {
+        query.blockNumber = {
           ...(rangeLow && { $gte: parseInt(rangeLow, 10) }),
           ...(rangeHigh && { $lte: parseInt(rangeHigh, 10) }),
-        },
-      };
+        };
+      }
 
       const blocks = await Block.find(query);
       res.json({ blocks });
@@ -30,12 +36,9 @@ module.exports = {
 
   async startBlockListener(req, res, next) {
     try {
-      const userId = req.user.id;
-      const user = await User.findById(userId);
-
-      if (user.isBlockListenerActive) {
-        throw new Error(`There is already a block listener active for user ${userId}`);
-      }
+      const { user } = req;
+      const userId = user.id;
+      const chainId = user.chain.id;
 
       ethersNewBlockListener(async (blockNumber) => {
         try {
@@ -58,10 +61,16 @@ module.exports = {
           const numberOfUncles = uncles.length;
           const numberOfProccessedTransactions = transactions.length;
 
+          const allBalancesAndAddresses = await Account.find({ chainId, userId }, 'balance address');
+          const accountBalances = allBalancesAndAddresses.reduce((obj, { address, balance }) => {
+            obj[address] = balance; // eslint-disable-line no-param-reassign
+            return obj;
+          }, {});
+
           const blockInfo = {
             blockCreationDate: new Date(timestamp * 1000),
             numberOfProccessedTransactions,
-            accountBalances: {},
+            accountBalances,
             blockSize: size,
             totalDifficulty,
             blockHash: hash,
@@ -73,6 +82,7 @@ module.exports = {
             difficulty,
             timestamp,
             gasLimit,
+            chainId,
             gasUsed,
             userId,
             nonce,
@@ -88,13 +98,7 @@ module.exports = {
         }
       });
 
-      user.isBlockListenerActive = true;
-      await user.save();
-
-      res.json({
-        user,
-        message: `A block listener is active for user ${userId}`,
-      });
+      next();
     } catch (err) {
       next(err);
     }

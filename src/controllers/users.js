@@ -3,6 +3,24 @@ const User = require('../models/User');
 const { signToken } = require('../services/jwt/');
 
 module.exports = {
+  async getUserFromJwtToken(req, res, next) {
+    try {
+      const { id } = req.user;
+      const user = await User.findById(id);
+
+      if (!user) {
+        throw new Error(
+          `User, ${id}, is not found in the DB`,
+        );
+      }
+
+      req.user = user;
+      next();
+    } catch (err) {
+      next(err);
+    }
+  },
+
   async getAll(req, res, next) {
     try {
       const users = await User.find();

@@ -1,13 +1,13 @@
 const router = require('express').Router();
-const blockController = require('../controllers/blocks');
+const accountController = require('../controllers/accounts');
 const { getUserFromJwtToken } = require('../controllers/users');
 
 router.use(getUserFromJwtToken);
 
 router.route('/')
-  .get(blockController.get);
+  .get(accountController.get);
 
-router.route('/listener')
-  .post(blockController.startBlockListener);
+router.route('/create/all')
+  .post(accountController.createAllAccounts);
 
 module.exports = router;

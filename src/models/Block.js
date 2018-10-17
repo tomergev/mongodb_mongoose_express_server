@@ -9,6 +9,10 @@ const blockSchema = new mongoose.Schema(
       ref: 'User',
       required: true,
     },
+    chainId: {
+      type: ObjectId,
+      required: true,
+    },
     blockCreationDate: {
       type: Date,
       required: true,

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const chainSchema = require('./childrenSchemas/chain');
 
 const userSchema = new mongoose.Schema(
   {
@@ -12,10 +13,7 @@ const userSchema = new mongoose.Schema(
       unique: true,
       required: true,
     },
-    isBlockListenerActive: {
-      type: Boolean,
-      default: false,
-    },
+    chain: chainSchema,
   },
   {
     timestamps: true,

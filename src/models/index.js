@@ -10,8 +10,9 @@ allFileNames.forEach((file) => {
 
   if (last3Chars === '.js' && file !== 'index.js') {
     const model = file.slice(0, file.length - 3);
-    const modelLowerCase = model.charAt(0).toLowerCase() + model.slice(1);
-    collections.push(`${modelLowerCase}s`);
+    const modelLowerCase = model.toLowerCase();
+    // If the model's name is not transactionseries, add an s; transactionseries is already plural
+    collections.push(`${modelLowerCase}${(modelLowerCase !== 'transactionseries' ? 's' : '')}`);
   }
 });
 

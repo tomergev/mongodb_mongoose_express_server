@@ -7,6 +7,16 @@ const transactionSchema = new mongoose.Schema(
     userId: {
       type: ObjectId,
       required: true,
+      ref: 'Users',
+    },
+    chainId: {
+      type: ObjectId,
+      required: true,
+    },
+    transactionSeriesId: {
+      type: ObjectId,
+      required: true,
+      ref: 'TransactionSeries',
     },
     hash: {
       type: String,
@@ -36,12 +46,17 @@ const transactionSchema = new mongoose.Schema(
     gasPrice: {
       type: Number,
     },
+    transactionSentTimestamp: {
+      type: Date,
+      required: true,
+      default: new Date(),
+    },
   },
   {
     timestamps: true,
   },
 );
 
-const Transaction = mongoose.model('Transaction', transactionSchema);
+const Transaction = mongoose.model('transactions', transactionSchema);
 
 module.exports = Transaction;

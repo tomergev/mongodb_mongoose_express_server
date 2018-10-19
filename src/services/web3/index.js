@@ -19,6 +19,7 @@ const web3Calls = methodKeys.reduce((obj, key) => {
 }, {});
 
 module.exports = {
+  // web3.utils.toWei is not a func and therefore the executeWeb3Command wont work with this action
   toWei: number => web3.utils.toWei(number),
   ...web3Calls,
 };

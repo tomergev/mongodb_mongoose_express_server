@@ -88,6 +88,6 @@ const blockSchema = new mongoose.Schema(
   },
 );
 
-const Block = mongoose.model('Block', blockSchema);
+const Block = mongoose.model('blocks', blockSchema);
 
 module.exports = Block;

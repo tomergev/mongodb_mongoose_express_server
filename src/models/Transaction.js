@@ -4,15 +4,15 @@ const { ObjectId } = mongoose.Schema.Types;
 
 const transactionSchema = new mongoose.Schema(
   {
-    userId: {
-      type: ObjectId,
-      required: true,
-      ref: 'Users',
-    },
-    chainId: {
-      type: ObjectId,
-      required: true,
-    },
+    // userId: {
+    //   type: ObjectId,
+    //   required: true,
+    //   ref: 'Users',
+    // },
+    // chainId: {
+    //   type: ObjectId,
+    //   required: true,
+    // },
     transactionSeriesId: {
       type: ObjectId,
       required: true,
@@ -34,6 +34,9 @@ const transactionSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    txValue: {
+      type: String,
+    },
     blockHash: {
       type: String,
     },
@@ -43,13 +46,11 @@ const transactionSchema = new mongoose.Schema(
     gas: {
       type: Number,
     },
-    gasPrice: {
+    gasUsed: {
       type: Number,
     },
-    transactionSentTimestamp: {
-      type: Date,
-      required: true,
-      default: new Date(),
+    gasPrice: {
+      type: Number,
     },
   },
   {

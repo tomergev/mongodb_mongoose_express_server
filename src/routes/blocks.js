@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const blockController = require('../controllers/blocks');
-const { getUserFromJwtToken } = require('../controllers/users');
+// const { getUserFromJwtToken } = require('../controllers/users');
 
-router.use(getUserFromJwtToken);
+// router.use(getUserFromJwtToken);
 
 router.route('/')
   .get(blockController.get);

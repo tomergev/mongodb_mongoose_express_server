@@ -1,18 +1,18 @@
 const mongoose = require('mongoose');
 
-const { ObjectId } = mongoose.Schema.Types;
+// const { ObjectId } = mongoose.Schema.Types;
 
 const transactionSeriesSchema = new mongoose.Schema(
   {
-    userId: {
-      type: ObjectId,
-      ref: 'Users',
-      required: true,
-    },
-    chainId: {
-      type: ObjectId,
-      required: true,
-    },
+    // userId: {
+    //   type: ObjectId,
+    //   ref: 'Users',
+    //   required: true,
+    // },
+    // chainId: {
+    //   type: ObjectId,
+    //   required: true,
+    // },
     transactionRateRange: {
       min: {
         type: Number,
@@ -48,10 +48,13 @@ const transactionSeriesSchema = new mongoose.Schema(
       required: true,
       default: true,
     },
+    numberOfTransactionsSent: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
     seriesStartDatetime: {
       type: Date,
-      required: true,
-      default: new Date(),
     },
     seriesEndDatetime: {
       type: Date,
@@ -61,6 +64,16 @@ const transactionSeriesSchema = new mongoose.Schema(
     timestamps: true,
   },
 );
+
+transactionSeriesSchema.pre('findOneAndUpdate', () => {
+  if (this.numberOfTransactionsSent === 0) {
+    this.update({}, {
+      $set: {
+        seriesStartDatetime: new Date(),
+      },
+    });
+  }
+});
 
 const TransactionSeries = mongoose.model('transactionseries', transactionSeriesSchema);
 

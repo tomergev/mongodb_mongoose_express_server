@@ -1,18 +1,18 @@
 const mongoose = require('mongoose');
 
-const { ObjectId } = mongoose.Schema.Types;
+// const { ObjectId } = mongoose.Schema.Types;
 
 const blockSchema = new mongoose.Schema(
   {
-    userId: {
-      type: ObjectId,
-      ref: 'User',
-      required: true,
-    },
-    chainId: {
-      type: ObjectId,
-      required: true,
-    },
+    // userId: {
+    //   type: ObjectId,
+    //   ref: 'User',
+    //   required: true,
+    // },
+    // chainId: {
+    //   type: ObjectId,
+    //   required: true,
+    // },
     blockCreationDate: {
       type: Date,
       required: true,
@@ -49,6 +49,7 @@ const blockSchema = new mongoose.Schema(
     blockNumber: {
       type: Number,
       required: true,
+      unique: true,
     },
     sha3Uncles: {
       type: String,

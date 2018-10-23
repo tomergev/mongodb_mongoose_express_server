@@ -2,7 +2,7 @@ const router = require('express').Router();
 const accountController = require('../controllers/accounts');
 const { getUserFromJwtToken } = require('../controllers/users');
 
-router.use(getUserFromJwtToken);
+// router.use(getUserFromJwtToken);
 
 router.route('/')
   .get(accountController.get);

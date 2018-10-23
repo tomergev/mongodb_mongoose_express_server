@@ -1,6 +1,8 @@
 const {
   getBalance,
+  getTransaction,
   sendTransaction,
+  getTransactionReceipt,
 } = require('../../services/web3/');
 // const winston = require('../../config/winston/');
 const Transaction = require('../../models/Transaction');
@@ -22,13 +24,7 @@ module.exports = {
       } = args;
 
       const transactionSeries = await TransactionSeries.findById(transactionSeriesId);
-
-      if (!transactionSeries.active) {
-        transactionSeries.seriesEndDatetime = new Date();
-        transactionSeries.save();
-        return;
-      }
-
+      if (!transactionSeries.active) return;
       const randomMillisecondInterval = generateRandomNumber(transactionRateRange) * 1000;
 
       setTimeout(
@@ -43,8 +39,6 @@ module.exports = {
   async sendBatchTransactions(args) {
     try {
       const {
-        userId,
-        chainId,
         accounts,
         weiValue,
         transactionSeriesId,
@@ -87,25 +81,19 @@ module.exports = {
         txInfoArray.push({ to, from, value });
       }
 
-      const createTransactionEntry = ({
-        to, from, value, hash,
-      }) => {
-        Transaction.create({
-          to,
-          hash,
-          from,
-          value,
-          userId,
-          chainId,
-          transactionSeriesId,
-        });
-      };
-
       const sendEthTransaction = ({ to, from, value }) => {
         sendTransaction({ to, from, value })
-          .then(hash => createTransactionEntry({
-            hash, to, from, value: parseInt(value, 10),
-          }))
+          .then((hash) => {
+            Transaction.create({
+              hash, to, from, transactionSeriesId, value,
+            });
+
+            TransactionSeries.findOneAndUpdate(
+              { _id: transactionSeriesId },
+              { $inc: { numberOfTransactionsSent: 1 } },
+              winstonErrorHandling,
+            );
+          })
           .catch(winstonErrorHandling);
       };
 
@@ -113,6 +101,77 @@ module.exports = {
         txInfoArray.forEach(sendEthTransaction),
         module.exports.setTransactionInterval(args),
       ]);
+    } catch (err) {
+      winstonErrorHandling(err);
+    }
+  },
+
+  async createTransactionDocs(txHashs) {
+    try {
+      if (!txHashs.length) return;
+
+      const transactions = await Promise.all(
+        txHashs.map(hash => Promise.all([
+          getTransaction(hash),
+          getTransactionReceipt(hash),
+        ])),
+      );
+
+      const updateTransactions = transactions.map(([transaction, receipt]) => {
+        const {
+          gas,
+          hash,
+          value,
+          gasPrice,
+          blockHash,
+          blockNumber,
+        } = transaction;
+        const { gasUsed } = receipt;
+
+        return {
+          updateOne: {
+            filter: { hash },
+            update: {
+              gas,
+              hash,
+              gasUsed,
+              gasPrice,
+              blockHash,
+              blockNumber,
+              txValue: value,
+            },
+          },
+        };
+      });
+
+      Transaction.bulkWrite(updateTransactions);
+
+      // if (!txHashs.length) return;
+
+      // const transactions = await Promise.all(
+      //   txHashs.map(hash => getTransaction(hash)),
+      // );
+
+
+      // const updateTransactions = transactions.map(({
+      // gas,
+      // hash,
+      // gasPrice,
+      // blockHash,
+      // blockNumber,
+      // }) => ({
+      //   updateOne: {
+      //     filter: { hash },
+      //     update: {
+      //       gas,
+      //       gasPrice,
+      //       blockHash,
+      //       blockNumber,
+      //     },
+      //   },
+      // }));
+
+      // Transaction.bulkWrite(updateTransactions);
     } catch (err) {
       winstonErrorHandling(err);
     }

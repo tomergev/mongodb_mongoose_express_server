@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const { MongoClient } = require('mongodb');
 const collections = require('./models/');
 // const winston = require('./config/winston');
+const { blockListener } = require('./services/ethers/');
+const { createAllAccounts } = require('./helpers/accounts/');
 
 const ipAddress = `mongodb://${process.env.IP_ADDRESS}`;
 const mongoDbUrl = `${ipAddress}:27017`;
@@ -35,6 +37,10 @@ module.exports = () => {
       useCreateIndex: true,
       useNewUrlParser: true,
     });
+
+    // Listening and recording new blocks in DB & creating all accounts
+    blockListener();
+    createAllAccounts();
 
     client.close();
   });

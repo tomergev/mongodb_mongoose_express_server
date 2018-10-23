@@ -4,6 +4,7 @@ const express = require('express');
 const jwt = require('express-jwt');
 const bodyParser = require('body-parser');
 const compression = require('compression');
+const boolParser = require('express-query-boolean');
 require('dotenv').config({ path: './.env' });
 const createDb = require('./db');
 const routes = require('./routes/');
@@ -15,6 +16,7 @@ app.use(cors());
 app.use(compression());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(boolParser());
 
 // app.use(morgan('combined', {
 //   stream: winston.stream,
@@ -22,14 +24,14 @@ app.use(bodyParser.json());
 //   skip: (_req, res) => res.statusCode < 399,
 // }));
 
-app.use(
-  jwt({ secret: config.jwt.secret }).unless({
-    path: [
-      '/auth/signup',
-      '/auth/login',
-    ],
-  }),
-);
+// app.use(
+//   jwt({ secret: config.jwt.secret }).unless({
+//     path: [
+//       '/auth/signup',
+//       '/auth/login',
+//     ],
+//   }),
+// );
 
 const routeKeys = Object.keys(routes);
 

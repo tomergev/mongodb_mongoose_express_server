@@ -10,8 +10,9 @@ module.exports = {
     try {
       const {
         limit,
-        dateLow,
         dateHigh,
+        weiToEther,
+        blockNumber,
       } = req.query;
 
       const options = {
@@ -21,17 +22,26 @@ module.exports = {
         },
       };
 
-      const query = {};
-      if (dateLow || dateHigh) {
-        query.createdAt = {
-          ...(dateLow && { $gte: new Date(dateLow) }),
-          ...(dateHigh && { $lte: new Date(dateHigh) }),
-        };
-      }
-
-      console.log(query, options);
+      const query = {
+        blockNumber: {
+          $ne: null,
+          ...(blockNumber && { $eq: blockNumber }),
+        },
+        ...(dateHigh && {
+          createdAt: {
+            $lte: new Date(dateHigh),
+          },
+        }),
+      };
 
       const transactions = await Transaction.find(query, null, options);
+
+      if (weiToEther) {
+        transactions.forEach(({ value }, i) => {
+          transactions[i].value = parseFloat(fromWei(value), 10).toFixed(2);
+        });
+      }
+
       res.json({ transactions });
     } catch (err) {
       next(err);
@@ -43,7 +53,7 @@ module.exports = {
       const { hash } = req.params;
       const { weiToEther } = req.query;
       const transaction = await Transaction.findOne({ hash });
-      if (weiToEther) transaction.value = (parseInt(fromWei(transaction.value), 10)).toFixed(2);
+      if (weiToEther) transaction.value = parseFloat(fromWei(transaction.value), 10).toFixed(2);
       res.json({ transaction });
     } catch (err) {
       next(err);
@@ -70,14 +80,23 @@ module.exports = {
 
   async getTransactionSeries(req, res, next) {
     try {
-      const { onlyActiveTransactionSeries } = req.query;
-      const query = {};
+      const {
+        limit,
+        dateHigh,
+        onlyActiveTransactionSeries,
+      } = req.query;
 
-      if (onlyActiveTransactionSeries) {
-        query.active = true;
-      }
+      const query = {
+        ...(onlyActiveTransactionSeries && { active: true }),
+        ...(dateHigh && {
+          createdAt: {
+            $lte: new Date(dateHigh),
+          },
+        }),
+      };
 
       const options = {
+        ...(limit && { limit: parseInt(limit, 10) }),
         sort: {
           seriesStartDatetime: -1,
         },
@@ -117,18 +136,13 @@ module.exports = {
       const { value, random } = etherOptions;
       const weiValue = random === 'true' ? 'random' : toWei(`${value}`);
 
-      let [
-        accounts,
-        transactionSeries,
-      ] = await Promise.all([
-        Account.find(),
-        TransactionSeries.create({
-          etherOptions,
-          transactionRateRange,
-          numberOfTransactionsRange,
-          seriesStartDatetime: new Date(),
-        }),
-      ]);
+      let accounts = await Account.find();
+      const transactionSeries = await TransactionSeries.create({
+        etherOptions,
+        transactionRateRange,
+        numberOfTransactionsRange,
+        seriesStartDatetime: new Date(),
+      });
 
       if (!accounts.length) {
         accounts = await createAllAccounts();

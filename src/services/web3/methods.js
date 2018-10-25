@@ -4,5 +4,6 @@ module.exports = {
   getAccounts: { domain: 'eth' },
   getTransaction: { domain: 'eth' },
   sendTransaction: { domain: 'eth' },
+  getTransactionCount: { domain: 'eth' },
   getTransactionReceipt: { domain: 'eth' },
 };

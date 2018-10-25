@@ -4,6 +4,7 @@ const collections = require('./models/');
 // const winston = require('./config/winston');
 const { blockListener } = require('./services/ethers/');
 const { createAllAccounts } = require('./helpers/accounts/');
+const { restartTransactionSeries } = require('./helpers/transactions/');
 
 const ipAddress = `mongodb://${process.env.IP_ADDRESS}`;
 const mongoDbUrl = `${ipAddress}:27017`;
@@ -13,7 +14,7 @@ const mongoConnectOptions = {
 
 // Creating the database and collections
 module.exports = () => {
-  MongoClient.connect(mongoDbUrl, mongoConnectOptions, (mongoConnectErr, client) => {
+  MongoClient.connect(mongoDbUrl, mongoConnectOptions, async (mongoConnectErr, client) => {
     if (mongoConnectErr) {
       // winston.error(mongoConnectErr);
       throw mongoConnectErr;
@@ -40,7 +41,8 @@ module.exports = () => {
 
     // Listening and recording new blocks in DB & creating all accounts
     blockListener();
-    createAllAccounts();
+    const accounts = await createAllAccounts();
+    restartTransactionSeries(accounts);
 
     client.close();
   });

@@ -3,6 +3,7 @@ const {
   getAccounts,
 } = require('../../services/web3/');
 const Account = require('../../models/Account');
+const { fromWei } = require('../../services/web3/');
 // const winston = require('../../config/winston/');
 
 module.exports = {
@@ -14,9 +15,13 @@ module.exports = {
 
         const insertAccounts = await Promise.all(
           addresses.map(async (address) => {
+            const balanceWei = await getBalance(address);
+            const balanceEther = fromWei(balanceWei);
+
             const document = {
               address,
-              balance: parseInt(await getBalance(address), 10),
+              balanceWei,
+              balanceEther,
             };
 
             accounts.push(document);

@@ -1,24 +1,29 @@
 const mongoose = require('mongoose');
 
-// const { ObjectId } = mongoose.Schema.Types;
-
 const accountSchema = new mongoose.Schema(
   {
-    // userId: {
-    //   type: ObjectId,
-    //   required: true,
-    // },
-    // chainId: {
-    //   type: ObjectId,
-    //   required: true,
-    // },
     address: {
       type: String,
       required: true,
+      unique: true,
     },
-    balance: {
+    balanceWei: {
+      type: String,
+      required: true,
+    },
+    balanceEther: {
+      type: String,
+      required: true,
+    },
+    totalSentTransactions: {
       type: Number,
       required: true,
+      default: 0,
+    },
+    totalReceivedTransactions: {
+      type: Number,
+      required: true,
+      default: 0,
     },
   },
   {

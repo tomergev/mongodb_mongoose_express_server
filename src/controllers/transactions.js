@@ -13,12 +13,13 @@ module.exports = {
         dateHigh,
         weiToEther,
         blockNumber,
+        transactionIndex,
       } = req.query;
 
       const options = {
         ...(limit && { limit: parseInt(limit, 10) }),
         sort: {
-          createdAt: -1,
+          ...(blockNumber ? { transactionIndex: 1 } : { createdAt: -1 }),
         },
       };
 
@@ -30,6 +31,11 @@ module.exports = {
         ...(dateHigh && {
           createdAt: {
             $lte: new Date(dateHigh),
+          },
+        }),
+        ...(transactionIndex && {
+          transactionIndex: {
+            [transactionIndex === '0' ? '$gte' : '$gt']: parseInt(transactionIndex, 10),
           },
         }),
       };

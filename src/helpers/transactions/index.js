@@ -1,4 +1,5 @@
 const {
+  toWei,
   getBalance,
   getTransaction,
   sendTransaction,
@@ -60,8 +61,8 @@ module.exports = {
       for (let count = 0; count < limit; count += 2) {
         const address1 = addressesAndBalances[count].address;
         const balance1 = addressesAndBalances[count].balance;
-        const address2 = addressesAndBalances[count].address;
-        const balance2 = addressesAndBalances[count].balance;
+        const address2 = addressesAndBalances[count + 1].address;
+        const balance2 = addressesAndBalances[count + 1].balance;
 
         let to;
         let from;
@@ -81,8 +82,8 @@ module.exports = {
         txInfoArray.push({ to, from, value });
       }
 
-      const sendEthTransaction = ({ to, from, value }) => {
-        sendTransaction({ to, from, value })
+      const sendEthTransaction = async ({ to, from, value }) => {
+        await sendTransaction({ to, from, value })
           .then((hash) => {
             Transaction.create({
               hash, to, from, transactionSeriesId, value,
@@ -98,9 +99,36 @@ module.exports = {
       };
 
       Promise.all([
-        txInfoArray.forEach(sendEthTransaction),
+        txInfoArray.map(sendEthTransaction),
         module.exports.setTransactionInterval(args),
       ]);
+    } catch (err) {
+      winstonErrorHandling(err);
+    }
+  },
+
+  async restartTransactionSeries(accounts) {
+    try {
+      const activeTransactionSeries = await TransactionSeries.find({ active: true });
+
+      activeTransactionSeries.forEach((transactionSeries) => {
+        const {
+          etherOptions,
+          transactionRateRange,
+          numberOfTransactionsRange,
+        } = transactionSeries;
+
+        const { value, random } = etherOptions;
+        const weiValue = random === 'true' ? 'random' : toWei(`${value}`);
+
+        module.exports.setTransactionInterval({
+          accounts,
+          weiValue,
+          transactionRateRange,
+          numberOfTransactionsRange,
+          transactionSeriesId: transactionSeries.id,
+        });
+      });
     } catch (err) {
       winstonErrorHandling(err);
     }
@@ -125,6 +153,7 @@ module.exports = {
           gasPrice,
           blockHash,
           blockNumber,
+          transactionIndex,
         } = transaction;
         const { gasUsed } = receipt;
 
@@ -139,6 +168,8 @@ module.exports = {
               blockHash,
               blockNumber,
               txValue: value,
+              pending: false,
+              transactionIndex,
             },
           },
         };

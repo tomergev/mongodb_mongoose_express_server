@@ -6,6 +6,7 @@ const {
   getTransactionReceipt,
 } = require('../../services/web3/');
 // const winston = require('../../config/winston/');
+const Account = require('../../models/Account');
 const Transaction = require('../../models/Transaction');
 const TransactionSeries = require('../../models/TransactionSeries');
 const generateRandomNumber = require('../../lib/generateRandomNumber/');
@@ -107,9 +108,15 @@ module.exports = {
     }
   },
 
-  async restartTransactionSeries(accounts) {
+  async restartTransactionSeries() {
     try {
-      const activeTransactionSeries = await TransactionSeries.find({ active: true });
+      const [
+        accounts,
+        activeTransactionSeries,
+      ] = await Promise.all([
+        Account.find(),
+        TransactionSeries.find({ active: true }),
+      ]);
 
       activeTransactionSeries.forEach((transactionSeries) => {
         const {
@@ -147,15 +154,19 @@ module.exports = {
 
       const updateTransactions = transactions.map(([transaction, receipt]) => {
         const {
+          status,
+          gasUsed,
+        } = receipt;
+        const {
           gas,
           hash,
           value,
+          nonce,
           gasPrice,
           blockHash,
           blockNumber,
           transactionIndex,
         } = transaction;
-        const { gasUsed } = receipt;
 
         return {
           updateOne: {
@@ -163,12 +174,13 @@ module.exports = {
             update: {
               gas,
               hash,
+              nonce,
               gasUsed,
               gasPrice,
               blockHash,
               blockNumber,
               txValue: value,
-              pending: false,
+              pending: !status,
               transactionIndex,
             },
           },
@@ -176,33 +188,6 @@ module.exports = {
       });
 
       Transaction.bulkWrite(updateTransactions);
-
-      // if (!txHashs.length) return;
-
-      // const transactions = await Promise.all(
-      //   txHashs.map(hash => getTransaction(hash)),
-      // );
-
-
-      // const updateTransactions = transactions.map(({
-      // gas,
-      // hash,
-      // gasPrice,
-      // blockHash,
-      // blockNumber,
-      // }) => ({
-      //   updateOne: {
-      //     filter: { hash },
-      //     update: {
-      //       gas,
-      //       gasPrice,
-      //       blockHash,
-      //       blockNumber,
-      //     },
-      //   },
-      // }));
-
-      // Transaction.bulkWrite(updateTransactions);
     } catch (err) {
       winstonErrorHandling(err);
     }

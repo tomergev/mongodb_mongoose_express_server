@@ -41,8 +41,8 @@ module.exports = () => {
 
     // Listening and recording new blocks in DB & creating all accounts
     blockListener();
-    const accounts = await createAllAccounts();
-    restartTransactionSeries(accounts);
+    await createAllAccounts().catch(console.log);
+    restartTransactionSeries();
 
     client.close();
   });

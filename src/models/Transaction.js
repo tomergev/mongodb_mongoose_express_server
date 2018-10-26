@@ -35,6 +35,9 @@ const transactionSchema = new mongoose.Schema(
     txValue: {
       type: String,
     },
+    nonce: {
+      type: Number,
+    },
     blockHash: {
       type: String,
     },

@@ -10,6 +10,7 @@ module.exports = {
     try {
       const {
         limit,
+        address,
         dateHigh,
         weiToEther,
         blockNumber,
@@ -37,6 +38,12 @@ module.exports = {
           transactionIndex: {
             [transactionIndex === '0' ? '$gte' : '$gt']: parseInt(transactionIndex, 10),
           },
+        }),
+        ...(address && {
+          $or: [
+            { to: address },
+            { from: address },
+          ],
         }),
       };
 

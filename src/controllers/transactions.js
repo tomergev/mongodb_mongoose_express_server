@@ -36,7 +36,7 @@ module.exports = {
         }),
         ...(transactionIndex && {
           transactionIndex: {
-            [transactionIndex === '0' ? '$gte' : '$gt']: parseInt(transactionIndex, 10),
+            $gt: parseInt(transactionIndex, 10),
           },
         }),
         ...(address && {

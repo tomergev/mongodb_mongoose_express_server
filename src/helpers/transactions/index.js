@@ -5,17 +5,12 @@ const {
   sendTransaction,
   getTransactionReceipt,
 } = require('../../services/web3/');
-// const winston = require('../../config/winston/');
 const Account = require('../../models/Account');
 const Transaction = require('../../models/Transaction');
+const { winstonErrorHandling } = require('../../config/winston/');
 const TransactionSeries = require('../../models/TransactionSeries');
 const generateRandomNumber = require('../../lib/generateRandomNumber/');
 const generateMultipleDifferentRandomNumbers = require('../../lib/generateMultipleDifferentRandomNumbers/');
-
-const winstonErrorHandling = (err) => {
-  console.log(err);
-  // winston.error(err);
-};
 
 module.exports = {
   async setTransactionInterval(args) {
@@ -85,17 +80,9 @@ module.exports = {
 
       const sendEthTransaction = async ({ to, from, value }) => {
         await sendTransaction({ to, from, value })
-          .then((hash) => {
-            Transaction.create({
-              hash, to, from, transactionSeriesId, value,
-            });
-
-            TransactionSeries.findOneAndUpdate(
-              { _id: transactionSeriesId },
-              { $inc: { numberOfTransactionsSent: 1 } },
-              winstonErrorHandling,
-            );
-          })
+          .then(hash => Transaction.create({
+            hash, to, from, transactionSeriesId, value,
+          }))
           .catch(winstonErrorHandling);
       };
 
@@ -158,10 +145,13 @@ module.exports = {
           gasUsed,
         } = receipt;
         const {
+          to,
           gas,
           hash,
+          from,
           value,
           nonce,
+          input,
           gasPrice,
           blockHash,
           blockNumber,
@@ -172,8 +162,12 @@ module.exports = {
           updateOne: {
             filter: { hash },
             update: {
+              to,
               gas,
               hash,
+              from,
+              value,
+              input,
               nonce,
               gasUsed,
               gasPrice,

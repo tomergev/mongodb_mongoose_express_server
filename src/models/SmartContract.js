@@ -10,9 +10,12 @@ const smartContractSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    address: {
+    senderAddress: {
       type: String,
       required: true,
+    },
+    contractAddress: {
+      type: String,
     },
     smartContractUtf8: {
       type: String,

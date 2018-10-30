@@ -9,7 +9,13 @@ const {
 module.exports = {
   async get(req, res, next) {
     try {
-      const accounts = await Account.find();
+      const { limit } = req.query;
+
+      const options = {
+        ...(limit && { limit: parseInt(limit, 10) }),
+      };
+
+      const accounts = await Account.find(null, null, options);
       res.json({ accounts });
     } catch (err) {
       next(err);

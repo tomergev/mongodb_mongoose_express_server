@@ -1,0 +1,440 @@
+{ error:
+   TypeError: Cannot read property 'id' of undefined
+       at Promise.prepDeployContract.send.on (/home/tomer/whiteblock-mongodb/src/controllers/smartContracts.js:61:44)
+       at Promise.emit (/home/tomer/whiteblock-mongodb/node_modules/eventemitter3/index.js:89:35)
+       at sendTxCallback (/home/tomer/whiteblock-mongodb/node_modules/web3-core-method/src/index.js:504:36)
+       at /home/tomer/whiteblock-mongodb/node_modules/web3-core-requestmanager/src/index.js:147:9
+       at XMLHttpRequest.request.onreadystatechange (/home/tomer/whiteblock-mongodb/node_modules/web3-providers-http/src/index.js:91:13)
+       at XMLHttpRequestEventTarget.dispatchEvent (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request-event-target.js:34:22)
+       at XMLHttpRequest._setReadyState (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:208:14)
+       at XMLHttpRequest._onHttpResponseEnd (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:318:14)
+       at IncomingMessage.<anonymous> (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:289:61)
+       at IncomingMessage.emit (events.js:187:15)
+       at endReadableNT (_stream_readable.js:1081:12)
+       at process._tickCallback (internal/process/next_tick.js:63:19),
+  level: 'error',
+  message:
+   'uncaughtException: Cannot read property \'id\' of undefined\nTypeError: Cannot read property \'id\' of undefined\n    at Promise.prepDeployContract.send.on (/home/tomer/whiteblock-mongodb/src/controllers/smartContracts.js:61:44)\n    at Promise.emit (/home/tomer/whiteblock-mongodb/node_modules/eventemitter3/index.js:89:35)\n    at sendTxCallback (/home/tomer/whiteblock-mongodb/node_modules/web3-core-method/src/index.js:504:36)\n    at /home/tomer/whiteblock-mongodb/node_modules/web3-core-requestmanager/src/index.js:147:9\n    at XMLHttpRequest.request.onreadystatechange (/home/tomer/whiteblock-mongodb/node_modules/web3-providers-http/src/index.js:91:13)\n    at XMLHttpRequestEventTarget.dispatchEvent (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request-event-target.js:34:22)\n    at XMLHttpRequest._setReadyState (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:208:14)\n    at XMLHttpRequest._onHttpResponseEnd (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:318:14)\n    at IncomingMessage.<anonymous> (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:289:61)\n    at IncomingMessage.emit (events.js:187:15)\n    at endReadableNT (_stream_readable.js:1081:12)\n    at process._tickCallback (internal/process/next_tick.js:63:19)',
+  stack:
+   'TypeError: Cannot read property \'id\' of undefined\n    at Promise.prepDeployContract.send.on (/home/tomer/whiteblock-mongodb/src/controllers/smartContracts.js:61:44)\n    at Promise.emit (/home/tomer/whiteblock-mongodb/node_modules/eventemitter3/index.js:89:35)\n    at sendTxCallback (/home/tomer/whiteblock-mongodb/node_modules/web3-core-method/src/index.js:504:36)\n    at /home/tomer/whiteblock-mongodb/node_modules/web3-core-requestmanager/src/index.js:147:9\n    at XMLHttpRequest.request.onreadystatechange (/home/tomer/whiteblock-mongodb/node_modules/web3-providers-http/src/index.js:91:13)\n    at XMLHttpRequestEventTarget.dispatchEvent (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request-event-target.js:34:22)\n    at XMLHttpRequest._setReadyState (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:208:14)\n    at XMLHttpRequest._onHttpResponseEnd (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:318:14)\n    at IncomingMessage.<anonymous> (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:289:61)\n    at IncomingMessage.emit (events.js:187:15)\n    at endReadableNT (_stream_readable.js:1081:12)\n    at process._tickCallback (internal/process/next_tick.js:63:19)',
+  exception: true,
+  date: 'Tue Oct 30 2018 12:02:04 GMT-0700 (Pacific Daylight Time)',
+  process:
+   { pid: 14488,
+     uid: 1000,
+     gid: 1000,
+     cwd: '/home/tomer/whiteblock-mongodb',
+     execPath: '/home/tomer/.nvm/versions/node/v10.7.0/bin/node',
+     version: 'v10.7.0',
+     argv:
+      [ '/home/tomer/.nvm/versions/node/v10.7.0/bin/node',
+        '/home/tomer/whiteblock-mongodb/src/app.js' ],
+     memoryUsage:
+      { rss: 167653376,
+        heapTotal: 75046912,
+        heapUsed: 65340680,
+        external: 53021711 } },
+  os:
+   { loadavg: [ 0.2705078125, 0.302734375, 0.2998046875 ],
+     uptime: 9131 },
+  trace:
+   [ { column: 44,
+       file:
+        '/home/tomer/whiteblock-mongodb/src/controllers/smartContracts.js',
+       function: 'Promise.prepDeployContract.send.on',
+       line: 61,
+       method: 'on',
+       native: false },
+     { column: 35,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/eventemitter3/index.js',
+       function: 'Promise.emit',
+       line: 89,
+       method: 'emit',
+       native: false },
+     { column: 36,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/web3-core-method/src/index.js',
+       function: 'sendTxCallback',
+       line: 504,
+       method: null,
+       native: false },
+     { column: 9,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/web3-core-requestmanager/src/index.js',
+       function: null,
+       line: 147,
+       method: null,
+       native: false },
+     { column: 13,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/web3-providers-http/src/index.js',
+       function: 'XMLHttpRequest.request.onreadystatechange',
+       line: 91,
+       method: 'onreadystatechange',
+       native: false },
+     { column: 22,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request-event-target.js',
+       function: 'XMLHttpRequestEventTarget.dispatchEvent',
+       line: 34,
+       method: 'dispatchEvent',
+       native: false },
+     { column: 14,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js',
+       function: 'XMLHttpRequest._setReadyState',
+       line: 208,
+       method: '_setReadyState',
+       native: false },
+     { column: 14,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js',
+       function: 'XMLHttpRequest._onHttpResponseEnd',
+       line: 318,
+       method: '_onHttpResponseEnd',
+       native: false },
+     { column: 61,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js',
+       function: null,
+       line: 289,
+       method: null,
+       native: false },
+     { column: 15,
+       file: 'events.js',
+       function: 'IncomingMessage.emit',
+       line: 187,
+       method: 'emit',
+       native: false },
+     { column: 12,
+       file: '_stream_readable.js',
+       function: 'endReadableNT',
+       line: 1081,
+       method: null,
+       native: false },
+     { column: 19,
+       file: 'internal/process/next_tick.js',
+       function: 'process._tickCallback',
+       line: 63,
+       method: '_tickCallback',
+       native: false } ],
+  timestamp: '2018-10-30T19:02:04.935Z',
+  [Symbol(level)]: 'error',
+  [Symbol(message)]:
+   '{"error":{},"level":"error","message":"uncaughtException: Cannot read property \'id\' of undefined\\nTypeError: Cannot read property \'id\' of undefined\\n    at Promise.prepDeployContract.send.on (/home/tomer/whiteblock-mongodb/src/controllers/smartContracts.js:61:44)\\n    at Promise.emit (/home/tomer/whiteblock-mongodb/node_modules/eventemitter3/index.js:89:35)\\n    at sendTxCallback (/home/tomer/whiteblock-mongodb/node_modules/web3-core-method/src/index.js:504:36)\\n    at /home/tomer/whiteblock-mongodb/node_modules/web3-core-requestmanager/src/index.js:147:9\\n    at XMLHttpRequest.request.onreadystatechange (/home/tomer/whiteblock-mongodb/node_modules/web3-providers-http/src/index.js:91:13)\\n    at XMLHttpRequestEventTarget.dispatchEvent (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request-event-target.js:34:22)\\n    at XMLHttpRequest._setReadyState (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:208:14)\\n    at XMLHttpRequest._onHttpResponseEnd (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:318:14)\\n    at IncomingMessage.<anonymous> (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:289:61)\\n    at IncomingMessage.emit (events.js:187:15)\\n    at endReadableNT (_stream_readable.js:1081:12)\\n    at process._tickCallback (internal/process/next_tick.js:63:19)","stack":"TypeError: Cannot read property \'id\' of undefined\\n    at Promise.prepDeployContract.send.on (/home/tomer/whiteblock-mongodb/src/controllers/smartContracts.js:61:44)\\n    at Promise.emit (/home/tomer/whiteblock-mongodb/node_modules/eventemitter3/index.js:89:35)\\n    at sendTxCallback (/home/tomer/whiteblock-mongodb/node_modules/web3-core-method/src/index.js:504:36)\\n    at /home/tomer/whiteblock-mongodb/node_modules/web3-core-requestmanager/src/index.js:147:9\\n    at XMLHttpRequest.request.onreadystatechange (/home/tomer/whiteblock-mongodb/node_modules/web3-providers-http/src/index.js:91:13)\\n    at XMLHttpRequestEventTarget.dispatchEvent (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request-event-target.js:34:22)\\n    at XMLHttpRequest._setReadyState (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:208:14)\\n    at XMLHttpRequest._onHttpResponseEnd (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:318:14)\\n    at IncomingMessage.<anonymous> (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:289:61)\\n    at IncomingMessage.emit (events.js:187:15)\\n    at endReadableNT (_stream_readable.js:1081:12)\\n    at process._tickCallback (internal/process/next_tick.js:63:19)","exception":true,"date":"Tue Oct 30 2018 12:02:04 GMT-0700 (Pacific Daylight Time)","process":{"pid":14488,"uid":1000,"gid":1000,"cwd":"/home/tomer/whiteblock-mongodb","execPath":"/home/tomer/.nvm/versions/node/v10.7.0/bin/node","version":"v10.7.0","argv":["/home/tomer/.nvm/versions/node/v10.7.0/bin/node","/home/tomer/whiteblock-mongodb/src/app.js"],"memoryUsage":{"rss":167653376,"heapTotal":75046912,"heapUsed":65340680,"external":53021711}},"os":{"loadavg":[0.2705078125,0.302734375,0.2998046875],"uptime":9131},"trace":[{"column":44,"file":"/home/tomer/whiteblock-mongodb/src/controllers/smartContracts.js","function":"Promise.prepDeployContract.send.on","line":61,"method":"on","native":false},{"column":35,"file":"/home/tomer/whiteblock-mongodb/node_modules/eventemitter3/index.js","function":"Promise.emit","line":89,"method":"emit","native":false},{"column":36,"file":"/home/tomer/whiteblock-mongodb/node_modules/web3-core-method/src/index.js","function":"sendTxCallback","line":504,"method":null,"native":false},{"column":9,"file":"/home/tomer/whiteblock-mongodb/node_modules/web3-core-requestmanager/src/index.js","function":null,"line":147,"method":null,"native":false},{"column":13,"file":"/home/tomer/whiteblock-mongodb/node_modules/web3-providers-http/src/index.js","function":"XMLHttpRequest.request.onreadystatechange","line":91,"method":"onreadystatechange","native":false},{"column":22,"file":"/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request-event-target.js","function":"XMLHttpRequestEventTarget.dispatchEvent","line":34,"method":"dispatchEvent","native":false},{"column":14,"file":"/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js","function":"XMLHttpRequest._setReadyState","line":208,"method":"_setReadyState","native":false},{"column":14,"file":"/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js","function":"XMLHttpRequest._onHttpResponseEnd","line":318,"method":"_onHttpResponseEnd","native":false},{"column":61,"file":"/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js","function":null,"line":289,"method":null,"native":false},{"column":15,"file":"events.js","function":"IncomingMessage.emit","line":187,"method":"emit","native":false},{"column":12,"file":"_stream_readable.js","function":"endReadableNT","line":1081,"method":null,"native":false},{"column":19,"file":"internal/process/next_tick.js","function":"process._tickCallback","line":63,"method":"_tickCallback","native":false}]}' }
+{ error:
+   TypeError: Cannot read property 'id' of undefined
+       at Promise.prepDeployContract.send.on (/home/tomer/whiteblock-mongodb/src/controllers/smartContracts.js:61:44)
+       at Promise.emit (/home/tomer/whiteblock-mongodb/node_modules/eventemitter3/index.js:89:35)
+       at sendTxCallback (/home/tomer/whiteblock-mongodb/node_modules/web3-core-method/src/index.js:504:36)
+       at /home/tomer/whiteblock-mongodb/node_modules/web3-core-requestmanager/src/index.js:147:9
+       at XMLHttpRequest.request.onreadystatechange (/home/tomer/whiteblock-mongodb/node_modules/web3-providers-http/src/index.js:91:13)
+       at XMLHttpRequestEventTarget.dispatchEvent (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request-event-target.js:34:22)
+       at XMLHttpRequest._setReadyState (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:208:14)
+       at XMLHttpRequest._onHttpResponseEnd (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:318:14)
+       at IncomingMessage.<anonymous> (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:289:61)
+       at IncomingMessage.emit (events.js:187:15)
+       at endReadableNT (_stream_readable.js:1081:12)
+       at process._tickCallback (internal/process/next_tick.js:63:19),
+  level: 'error',
+  message:
+   'uncaughtException: Cannot read property \'id\' of undefined\nTypeError: Cannot read property \'id\' of undefined\n    at Promise.prepDeployContract.send.on (/home/tomer/whiteblock-mongodb/src/controllers/smartContracts.js:61:44)\n    at Promise.emit (/home/tomer/whiteblock-mongodb/node_modules/eventemitter3/index.js:89:35)\n    at sendTxCallback (/home/tomer/whiteblock-mongodb/node_modules/web3-core-method/src/index.js:504:36)\n    at /home/tomer/whiteblock-mongodb/node_modules/web3-core-requestmanager/src/index.js:147:9\n    at XMLHttpRequest.request.onreadystatechange (/home/tomer/whiteblock-mongodb/node_modules/web3-providers-http/src/index.js:91:13)\n    at XMLHttpRequestEventTarget.dispatchEvent (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request-event-target.js:34:22)\n    at XMLHttpRequest._setReadyState (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:208:14)\n    at XMLHttpRequest._onHttpResponseEnd (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:318:14)\n    at IncomingMessage.<anonymous> (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:289:61)\n    at IncomingMessage.emit (events.js:187:15)\n    at endReadableNT (_stream_readable.js:1081:12)\n    at process._tickCallback (internal/process/next_tick.js:63:19)',
+  stack:
+   'TypeError: Cannot read property \'id\' of undefined\n    at Promise.prepDeployContract.send.on (/home/tomer/whiteblock-mongodb/src/controllers/smartContracts.js:61:44)\n    at Promise.emit (/home/tomer/whiteblock-mongodb/node_modules/eventemitter3/index.js:89:35)\n    at sendTxCallback (/home/tomer/whiteblock-mongodb/node_modules/web3-core-method/src/index.js:504:36)\n    at /home/tomer/whiteblock-mongodb/node_modules/web3-core-requestmanager/src/index.js:147:9\n    at XMLHttpRequest.request.onreadystatechange (/home/tomer/whiteblock-mongodb/node_modules/web3-providers-http/src/index.js:91:13)\n    at XMLHttpRequestEventTarget.dispatchEvent (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request-event-target.js:34:22)\n    at XMLHttpRequest._setReadyState (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:208:14)\n    at XMLHttpRequest._onHttpResponseEnd (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:318:14)\n    at IncomingMessage.<anonymous> (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:289:61)\n    at IncomingMessage.emit (events.js:187:15)\n    at endReadableNT (_stream_readable.js:1081:12)\n    at process._tickCallback (internal/process/next_tick.js:63:19)',
+  exception: true,
+  date: 'Tue Oct 30 2018 12:02:57 GMT-0700 (Pacific Daylight Time)',
+  process:
+   { pid: 14627,
+     uid: 1000,
+     gid: 1000,
+     cwd: '/home/tomer/whiteblock-mongodb',
+     execPath: '/home/tomer/.nvm/versions/node/v10.7.0/bin/node',
+     version: 'v10.7.0',
+     argv:
+      [ '/home/tomer/.nvm/versions/node/v10.7.0/bin/node',
+        '/home/tomer/whiteblock-mongodb/src/app.js' ],
+     memoryUsage:
+      { rss: 165879808,
+        heapTotal: 102834176,
+        heapUsed: 64362960,
+        external: 53021336 } },
+  os:
+   { loadavg: [ 0.40234375, 0.34033203125, 0.3125 ], uptime: 9183 },
+  trace:
+   [ { column: 44,
+       file:
+        '/home/tomer/whiteblock-mongodb/src/controllers/smartContracts.js',
+       function: 'Promise.prepDeployContract.send.on',
+       line: 61,
+       method: 'on',
+       native: false },
+     { column: 35,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/eventemitter3/index.js',
+       function: 'Promise.emit',
+       line: 89,
+       method: 'emit',
+       native: false },
+     { column: 36,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/web3-core-method/src/index.js',
+       function: 'sendTxCallback',
+       line: 504,
+       method: null,
+       native: false },
+     { column: 9,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/web3-core-requestmanager/src/index.js',
+       function: null,
+       line: 147,
+       method: null,
+       native: false },
+     { column: 13,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/web3-providers-http/src/index.js',
+       function: 'XMLHttpRequest.request.onreadystatechange',
+       line: 91,
+       method: 'onreadystatechange',
+       native: false },
+     { column: 22,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request-event-target.js',
+       function: 'XMLHttpRequestEventTarget.dispatchEvent',
+       line: 34,
+       method: 'dispatchEvent',
+       native: false },
+     { column: 14,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js',
+       function: 'XMLHttpRequest._setReadyState',
+       line: 208,
+       method: '_setReadyState',
+       native: false },
+     { column: 14,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js',
+       function: 'XMLHttpRequest._onHttpResponseEnd',
+       line: 318,
+       method: '_onHttpResponseEnd',
+       native: false },
+     { column: 61,
+       file:
+        '/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js',
+       function: null,
+       line: 289,
+       method: null,
+       native: false },
+     { column: 15,
+       file: 'events.js',
+       function: 'IncomingMessage.emit',
+       line: 187,
+       method: 'emit',
+       native: false },
+     { column: 12,
+       file: '_stream_readable.js',
+       function: 'endReadableNT',
+       line: 1081,
+       method: null,
+       native: false },
+     { column: 19,
+       file: 'internal/process/next_tick.js',
+       function: 'process._tickCallback',
+       line: 63,
+       method: '_tickCallback',
+       native: false } ],
+  timestamp: '2018-10-30T19:02:57.154Z',
+  [Symbol(level)]: 'error',
+  [Symbol(message)]:
+   '{"error":{},"level":"error","message":"uncaughtException: Cannot read property \'id\' of undefined\\nTypeError: Cannot read property \'id\' of undefined\\n    at Promise.prepDeployContract.send.on (/home/tomer/whiteblock-mongodb/src/controllers/smartContracts.js:61:44)\\n    at Promise.emit (/home/tomer/whiteblock-mongodb/node_modules/eventemitter3/index.js:89:35)\\n    at sendTxCallback (/home/tomer/whiteblock-mongodb/node_modules/web3-core-method/src/index.js:504:36)\\n    at /home/tomer/whiteblock-mongodb/node_modules/web3-core-requestmanager/src/index.js:147:9\\n    at XMLHttpRequest.request.onreadystatechange (/home/tomer/whiteblock-mongodb/node_modules/web3-providers-http/src/index.js:91:13)\\n    at XMLHttpRequestEventTarget.dispatchEvent (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request-event-target.js:34:22)\\n    at XMLHttpRequest._setReadyState (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:208:14)\\n    at XMLHttpRequest._onHttpResponseEnd (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:318:14)\\n    at IncomingMessage.<anonymous> (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:289:61)\\n    at IncomingMessage.emit (events.js:187:15)\\n    at endReadableNT (_stream_readable.js:1081:12)\\n    at process._tickCallback (internal/process/next_tick.js:63:19)","stack":"TypeError: Cannot read property \'id\' of undefined\\n    at Promise.prepDeployContract.send.on (/home/tomer/whiteblock-mongodb/src/controllers/smartContracts.js:61:44)\\n    at Promise.emit (/home/tomer/whiteblock-mongodb/node_modules/eventemitter3/index.js:89:35)\\n    at sendTxCallback (/home/tomer/whiteblock-mongodb/node_modules/web3-core-method/src/index.js:504:36)\\n    at /home/tomer/whiteblock-mongodb/node_modules/web3-core-requestmanager/src/index.js:147:9\\n    at XMLHttpRequest.request.onreadystatechange (/home/tomer/whiteblock-mongodb/node_modules/web3-providers-http/src/index.js:91:13)\\n    at XMLHttpRequestEventTarget.dispatchEvent (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request-event-target.js:34:22)\\n    at XMLHttpRequest._setReadyState (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:208:14)\\n    at XMLHttpRequest._onHttpResponseEnd (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:318:14)\\n    at IncomingMessage.<anonymous> (/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js:289:61)\\n    at IncomingMessage.emit (events.js:187:15)\\n    at endReadableNT (_stream_readable.js:1081:12)\\n    at process._tickCallback (internal/process/next_tick.js:63:19)","exception":true,"date":"Tue Oct 30 2018 12:02:57 GMT-0700 (Pacific Daylight Time)","process":{"pid":14627,"uid":1000,"gid":1000,"cwd":"/home/tomer/whiteblock-mongodb","execPath":"/home/tomer/.nvm/versions/node/v10.7.0/bin/node","version":"v10.7.0","argv":["/home/tomer/.nvm/versions/node/v10.7.0/bin/node","/home/tomer/whiteblock-mongodb/src/app.js"],"memoryUsage":{"rss":165879808,"heapTotal":102834176,"heapUsed":64362960,"external":53021336}},"os":{"loadavg":[0.40234375,0.34033203125,0.3125],"uptime":9183},"trace":[{"column":44,"file":"/home/tomer/whiteblock-mongodb/src/controllers/smartContracts.js","function":"Promise.prepDeployContract.send.on","line":61,"method":"on","native":false},{"column":35,"file":"/home/tomer/whiteblock-mongodb/node_modules/eventemitter3/index.js","function":"Promise.emit","line":89,"method":"emit","native":false},{"column":36,"file":"/home/tomer/whiteblock-mongodb/node_modules/web3-core-method/src/index.js","function":"sendTxCallback","line":504,"method":null,"native":false},{"column":9,"file":"/home/tomer/whiteblock-mongodb/node_modules/web3-core-requestmanager/src/index.js","function":null,"line":147,"method":null,"native":false},{"column":13,"file":"/home/tomer/whiteblock-mongodb/node_modules/web3-providers-http/src/index.js","function":"XMLHttpRequest.request.onreadystatechange","line":91,"method":"onreadystatechange","native":false},{"column":22,"file":"/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request-event-target.js","function":"XMLHttpRequestEventTarget.dispatchEvent","line":34,"method":"dispatchEvent","native":false},{"column":14,"file":"/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js","function":"XMLHttpRequest._setReadyState","line":208,"method":"_setReadyState","native":false},{"column":14,"file":"/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js","function":"XMLHttpRequest._onHttpResponseEnd","line":318,"method":"_onHttpResponseEnd","native":false},{"column":61,"file":"/home/tomer/whiteblock-mongodb/node_modules/xhr2-cookies/dist/xml-http-request.js","function":null,"line":289,"method":null,"native":false},{"column":15,"file":"events.js","function":"IncomingMessage.emit","line":187,"method":"emit","native":false},{"column":12,"file":"_stream_readable.js","function":"endReadableNT","line":1081,"method":null,"native":false},{"column":19,"file":"internal/process/next_tick.js","function":"process._tickCallback","line":63,"method":"_tickCallback","native":false}]}' }
+{ error:
+   /home/tomer/whiteblock-mongodb/src/controllers/smartContracts.js:75
+             await deploymentTransactionHash = hash;
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   
+   ReferenceError: Invalid left-hand side in assignment
+       at new Script (vm.js:74:7)
+       at createScript (vm.js:246:10)
+       at Object.runInThisContext (vm.js:298:10)
+       at Module._compile (internal/modules/cjs/loader.js:657:28)
+       at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)
+       at Module.load (internal/modules/cjs/loader.js:599:32)
+       at tryModuleLoad (internal/modules/cjs/loader.js:538:12)
+       at Function.Module._load (internal/modules/cjs/loader.js:530:3)
+       at Module.require (internal/modules/cjs/loader.js:637:17)
+       at require (internal/modules/cjs/helpers.js:20:18)
+       at Object.<anonymous> (/home/tomer/whiteblock-mongodb/src/routes/smartContracts.js:2:34)
+       at Module._compile (internal/modules/cjs/loader.js:689:30)
+       at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)
+       at Module.load (internal/modules/cjs/loader.js:599:32)
+       at tryModuleLoad (internal/modules/cjs/loader.js:538:12)
+       at Function.Module._load (internal/modules/cjs/loader.js:530:3)
+       at Module.require (internal/modules/cjs/loader.js:637:17)
+       at require (internal/modules/cjs/helpers.js:20:18)
+       at allFileNames.forEach (/home/tomer/whiteblock-mongodb/src/routes/index.js:9:48)
+       at Array.forEach (<anonymous>)
+       at Object.<anonymous> (/home/tomer/whiteblock-mongodb/src/routes/index.js:6:14)
+       at Module._compile (internal/modules/cjs/loader.js:689:30),
+  level: 'error',
+  message:
+   'uncaughtException: Invalid left-hand side in assignment\n/home/tomer/whiteblock-mongodb/src/controllers/smartContracts.js:75\n          await deploymentTransactionHash = hash;\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nReferenceError: Invalid left-hand side in assignment\n    at new Script (vm.js:74:7)\n    at createScript (vm.js:246:10)\n    at Object.runInThisContext (vm.js:298:10)\n    at Module._compile (internal/modules/cjs/loader.js:657:28)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)\n    at Module.load (internal/modules/cjs/loader.js:599:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:530:3)\n    at Module.require (internal/modules/cjs/loader.js:637:17)\n    at require (internal/modules/cjs/helpers.js:20:18)\n    at Object.<anonymous> (/home/tomer/whiteblock-mongodb/src/routes/smartContracts.js:2:34)\n    at Module._compile (internal/modules/cjs/loader.js:689:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)\n    at Module.load (internal/modules/cjs/loader.js:599:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:530:3)\n    at Module.require (internal/modules/cjs/loader.js:637:17)\n    at require (internal/modules/cjs/helpers.js:20:18)\n    at allFileNames.forEach (/home/tomer/whiteblock-mongodb/src/routes/index.js:9:48)\n    at Array.forEach (<anonymous>)\n    at Object.<anonymous> (/home/tomer/whiteblock-mongodb/src/routes/index.js:6:14)\n    at Module._compile (internal/modules/cjs/loader.js:689:30)',
+  stack:
+   '/home/tomer/whiteblock-mongodb/src/controllers/smartContracts.js:75\n          await deploymentTransactionHash = hash;\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nReferenceError: Invalid left-hand side in assignment\n    at new Script (vm.js:74:7)\n    at createScript (vm.js:246:10)\n    at Object.runInThisContext (vm.js:298:10)\n    at Module._compile (internal/modules/cjs/loader.js:657:28)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)\n    at Module.load (internal/modules/cjs/loader.js:599:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:530:3)\n    at Module.require (internal/modules/cjs/loader.js:637:17)\n    at require (internal/modules/cjs/helpers.js:20:18)\n    at Object.<anonymous> (/home/tomer/whiteblock-mongodb/src/routes/smartContracts.js:2:34)\n    at Module._compile (internal/modules/cjs/loader.js:689:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)\n    at Module.load (internal/modules/cjs/loader.js:599:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:530:3)\n    at Module.require (internal/modules/cjs/loader.js:637:17)\n    at require (internal/modules/cjs/helpers.js:20:18)\n    at allFileNames.forEach (/home/tomer/whiteblock-mongodb/src/routes/index.js:9:48)\n    at Array.forEach (<anonymous>)\n    at Object.<anonymous> (/home/tomer/whiteblock-mongodb/src/routes/index.js:6:14)\n    at Module._compile (internal/modules/cjs/loader.js:689:30)',
+  exception: true,
+  date: 'Tue Oct 30 2018 15:08:46 GMT-0700 (Pacific Daylight Time)',
+  process:
+   { pid: 25816,
+     uid: 1000,
+     gid: 1000,
+     cwd: '/home/tomer/whiteblock-mongodb',
+     execPath: '/home/tomer/.nvm/versions/node/v10.7.0/bin/node',
+     version: 'v10.7.0',
+     argv:
+      [ '/home/tomer/.nvm/versions/node/v10.7.0/bin/node',
+        '/home/tomer/whiteblock-mongodb/src/app.js' ],
+     memoryUsage:
+      { rss: 92041216,
+        heapTotal: 63746048,
+        heapUsed: 39744504,
+        external: 37432297 } },
+  os:
+   { loadavg: [ 0.962890625, 0.96044921875, 0.7900390625 ],
+     uptime: 20333 },
+  trace:
+   [ { column: 7,
+       file: 'vm.js',
+       function: 'new Script',
+       line: 74,
+       method: null,
+       native: false },
+     { column: 10,
+       file: 'vm.js',
+       function: 'createScript',
+       line: 246,
+       method: null,
+       native: false },
+     { column: 10,
+       file: 'vm.js',
+       function: 'Object.runInThisContext',
+       line: 298,
+       method: 'runInThisContext',
+       native: false },
+     { column: 28,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'Module._compile',
+       line: 657,
+       method: '_compile',
+       native: false },
+     { column: 10,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'Module._extensions..js',
+       line: 700,
+       method: '.js',
+       native: false },
+     { column: 32,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'Module.load',
+       line: 599,
+       method: 'load',
+       native: false },
+     { column: 12,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'tryModuleLoad',
+       line: 538,
+       method: null,
+       native: false },
+     { column: 3,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'Module._load',
+       line: 530,
+       method: '_load',
+       native: false },
+     { column: 17,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'Module.require',
+       line: 637,
+       method: 'require',
+       native: false },
+     { column: 18,
+       file: 'internal/modules/cjs/helpers.js',
+       function: 'require',
+       line: 20,
+       method: null,
+       native: false },
+     { column: 34,
+       file:
+        '/home/tomer/whiteblock-mongodb/src/routes/smartContracts.js',
+       function: null,
+       line: 2,
+       method: null,
+       native: false },
+     { column: 30,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'Module._compile',
+       line: 689,
+       method: '_compile',
+       native: false },
+     { column: 10,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'Module._extensions..js',
+       line: 700,
+       method: '.js',
+       native: false },
+     { column: 32,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'Module.load',
+       line: 599,
+       method: 'load',
+       native: false },
+     { column: 12,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'tryModuleLoad',
+       line: 538,
+       method: null,
+       native: false },
+     { column: 3,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'Module._load',
+       line: 530,
+       method: '_load',
+       native: false },
+     { column: 17,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'Module.require',
+       line: 637,
+       method: 'require',
+       native: false },
+     { column: 18,
+       file: 'internal/modules/cjs/helpers.js',
+       function: 'require',
+       line: 20,
+       method: null,
+       native: false },
+     { column: 48,
+       file: '/home/tomer/whiteblock-mongodb/src/routes/index.js',
+       function: 'allFileNames.forEach',
+       line: 9,
+       method: 'forEach',
+       native: false },
+     { column: null,
+       file: null,
+       function: 'Array.forEach',
+       line: null,
+       method: 'forEach',
+       native: false },
+     { column: 14,
+       file: '/home/tomer/whiteblock-mongodb/src/routes/index.js',
+       function: null,
+       line: 6,
+       method: null,
+       native: false },
+     { column: 30,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'Module._compile',
+       line: 689,
+       method: '_compile',
+       native: false } ],
+  timestamp: '2018-10-30T22:08:46.803Z',
+  [Symbol(level)]: 'error',
+  [Symbol(message)]:
+   '{"error":{},"level":"error","message":"uncaughtException: Invalid left-hand side in assignment\\n/home/tomer/whiteblock-mongodb/src/controllers/smartContracts.js:75\\n          await deploymentTransactionHash = hash;\\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n\\nReferenceError: Invalid left-hand side in assignment\\n    at new Script (vm.js:74:7)\\n    at createScript (vm.js:246:10)\\n    at Object.runInThisContext (vm.js:298:10)\\n    at Module._compile (internal/modules/cjs/loader.js:657:28)\\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)\\n    at Module.load (internal/modules/cjs/loader.js:599:32)\\n    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)\\n    at Function.Module._load (internal/modules/cjs/loader.js:530:3)\\n    at Module.require (internal/modules/cjs/loader.js:637:17)\\n    at require (internal/modules/cjs/helpers.js:20:18)\\n    at Object.<anonymous> (/home/tomer/whiteblock-mongodb/src/routes/smartContracts.js:2:34)\\n    at Module._compile (internal/modules/cjs/loader.js:689:30)\\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)\\n    at Module.load (internal/modules/cjs/loader.js:599:32)\\n    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)\\n    at Function.Module._load (internal/modules/cjs/loader.js:530:3)\\n    at Module.require (internal/modules/cjs/loader.js:637:17)\\n    at require (internal/modules/cjs/helpers.js:20:18)\\n    at allFileNames.forEach (/home/tomer/whiteblock-mongodb/src/routes/index.js:9:48)\\n    at Array.forEach (<anonymous>)\\n    at Object.<anonymous> (/home/tomer/whiteblock-mongodb/src/routes/index.js:6:14)\\n    at Module._compile (internal/modules/cjs/loader.js:689:30)","stack":"/home/tomer/whiteblock-mongodb/src/controllers/smartContracts.js:75\\n          await deploymentTransactionHash = hash;\\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n\\nReferenceError: Invalid left-hand side in assignment\\n    at new Script (vm.js:74:7)\\n    at createScript (vm.js:246:10)\\n    at Object.runInThisContext (vm.js:298:10)\\n    at Module._compile (internal/modules/cjs/loader.js:657:28)\\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)\\n    at Module.load (internal/modules/cjs/loader.js:599:32)\\n    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)\\n    at Function.Module._load (internal/modules/cjs/loader.js:530:3)\\n    at Module.require (internal/modules/cjs/loader.js:637:17)\\n    at require (internal/modules/cjs/helpers.js:20:18)\\n    at Object.<anonymous> (/home/tomer/whiteblock-mongodb/src/routes/smartContracts.js:2:34)\\n    at Module._compile (internal/modules/cjs/loader.js:689:30)\\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)\\n    at Module.load (internal/modules/cjs/loader.js:599:32)\\n    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)\\n    at Function.Module._load (internal/modules/cjs/loader.js:530:3)\\n    at Module.require (internal/modules/cjs/loader.js:637:17)\\n    at require (internal/modules/cjs/helpers.js:20:18)\\n    at allFileNames.forEach (/home/tomer/whiteblock-mongodb/src/routes/index.js:9:48)\\n    at Array.forEach (<anonymous>)\\n    at Object.<anonymous> (/home/tomer/whiteblock-mongodb/src/routes/index.js:6:14)\\n    at Module._compile (internal/modules/cjs/loader.js:689:30)","exception":true,"date":"Tue Oct 30 2018 15:08:46 GMT-0700 (Pacific Daylight Time)","process":{"pid":25816,"uid":1000,"gid":1000,"cwd":"/home/tomer/whiteblock-mongodb","execPath":"/home/tomer/.nvm/versions/node/v10.7.0/bin/node","version":"v10.7.0","argv":["/home/tomer/.nvm/versions/node/v10.7.0/bin/node","/home/tomer/whiteblock-mongodb/src/app.js"],"memoryUsage":{"rss":92041216,"heapTotal":63746048,"heapUsed":39744504,"external":37432297}},"os":{"loadavg":[0.962890625,0.96044921875,0.7900390625],"uptime":20333},"trace":[{"column":7,"file":"vm.js","function":"new Script","line":74,"method":null,"native":false},{"column":10,"file":"vm.js","function":"createScript","line":246,"method":null,"native":false},{"column":10,"file":"vm.js","function":"Object.runInThisContext","line":298,"method":"runInThisContext","native":false},{"column":28,"file":"internal/modules/cjs/loader.js","function":"Module._compile","line":657,"method":"_compile","native":false},{"column":10,"file":"internal/modules/cjs/loader.js","function":"Module._extensions..js","line":700,"method":".js","native":false},{"column":32,"file":"internal/modules/cjs/loader.js","function":"Module.load","line":599,"method":"load","native":false},{"column":12,"file":"internal/modules/cjs/loader.js","function":"tryModuleLoad","line":538,"method":null,"native":false},{"column":3,"file":"internal/modules/cjs/loader.js","function":"Module._load","line":530,"method":"_load","native":false},{"column":17,"file":"internal/modules/cjs/loader.js","function":"Module.require","line":637,"method":"require","native":false},{"column":18,"file":"internal/modules/cjs/helpers.js","function":"require","line":20,"method":null,"native":false},{"column":34,"file":"/home/tomer/whiteblock-mongodb/src/routes/smartContracts.js","function":null,"line":2,"method":null,"native":false},{"column":30,"file":"internal/modules/cjs/loader.js","function":"Module._compile","line":689,"method":"_compile","native":false},{"column":10,"file":"internal/modules/cjs/loader.js","function":"Module._extensions..js","line":700,"method":".js","native":false},{"column":32,"file":"internal/modules/cjs/loader.js","function":"Module.load","line":599,"method":"load","native":false},{"column":12,"file":"internal/modules/cjs/loader.js","function":"tryModuleLoad","line":538,"method":null,"native":false},{"column":3,"file":"internal/modules/cjs/loader.js","function":"Module._load","line":530,"method":"_load","native":false},{"column":17,"file":"internal/modules/cjs/loader.js","function":"Module.require","line":637,"method":"require","native":false},{"column":18,"file":"internal/modules/cjs/helpers.js","function":"require","line":20,"method":null,"native":false},{"column":48,"file":"/home/tomer/whiteblock-mongodb/src/routes/index.js","function":"allFileNames.forEach","line":9,"method":"forEach","native":false},{"column":null,"file":null,"function":"Array.forEach","line":null,"method":"forEach","native":false},{"column":14,"file":"/home/tomer/whiteblock-mongodb/src/routes/index.js","function":null,"line":6,"method":null,"native":false},{"column":30,"file":"internal/modules/cjs/loader.js","function":"Module._compile","line":689,"method":"_compile","native":false}]}' }

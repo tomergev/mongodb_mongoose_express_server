@@ -1,24 +1,24 @@
 const mongoose = require('mongoose');
 const Account = require('./Account');
-// const winston = require('../config/winston/');
+const TransactionSeries = require('./TransactionSeries');
+const { winstonErrorHandling } = require('../config/winston/');
 
 const { ObjectId } = mongoose.Schema.Types;
-
-const winstonErrorHandling = (err) => {
-  console.log(err);
-  // winston.error(err);
-};
 
 const transactionSchema = new mongoose.Schema(
   {
     transactionSeriesId: {
       type: ObjectId,
-      required: true,
+      // required: true,
       ref: 'TransactionSeries',
+    },
+    smartContractId: {
+      type: ObjectId,
     },
     hash: {
       type: String,
       required: true,
+      unique: true,
     },
     from: {
       type: String,
@@ -26,11 +26,9 @@ const transactionSchema = new mongoose.Schema(
     },
     to: {
       type: String,
-      required: true,
     },
     value: {
       type: String,
-      required: true,
     },
     txValue: {
       type: String,
@@ -56,10 +54,18 @@ const transactionSchema = new mongoose.Schema(
     transactionIndex: {
       type: Number,
     },
+    input: {
+      type: String,
+    },
     pending: {
       type: Boolean,
       required: true,
       default: true,
+    },
+    deployedContract: {
+      type: Boolean,
+      required: true,
+      default: false,
     },
   },
   {
@@ -67,10 +73,16 @@ const transactionSchema = new mongoose.Schema(
   },
 );
 
-transactionSchema.post('save', ({ to, from }) => {
+transactionSchema.post('save', ({ to, from, transactionSeriesId }) => {
   Promise.all([
     Account.findOneAndUpdate({ address: from }, { $inc: { totalSentTransactions: 1 } }),
-    Account.findOneAndUpdate({ address: to }, { $inc: { totalReceivedTransactions: 1 } }),
+    // Checking if "to" exists. When deploying a contract, there is no "to" value
+    (to && Account.findOneAndUpdate({ address: to }, { $inc: { totalReceivedTransactions: 1 } })),
+    // Checking if transactionSeriesId exists, when deploying a contract, this value is null
+    (transactionSeriesId && TransactionSeries.findOneAndUpdate(
+      { _id: transactionSeriesId },
+      { $inc: { numberOfTransactionsSent: 1 } },
+    )),
   ])
     .catch(winstonErrorHandling);
 });

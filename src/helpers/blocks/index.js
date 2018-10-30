@@ -1,14 +1,9 @@
 const Block = require('../../models/Block');
 const Account = require('../../models/Account');
-// const winston = require('../config/winston/');
 const { getBlock } = require('../../services/web3/');
 const { createAllAccounts } = require('../accounts/');
 const { createTransactionDocs } = require('../transactions/');
-
-const winstonErrorHandling = (err) => {
-  console.log(err);
-  // winston.error(err);
-};
+const { winstonErrorHandling } = require('../../config/winston/');
 
 module.exports = {
   async formatBlockData(blockNumber) {

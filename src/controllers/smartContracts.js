@@ -1,11 +1,22 @@
 const solc = require('solc');
+const Transaction = require('../models/Transaction');
 const { createContract } = require('../services/web3/');
 const SmartContract = require('../models/SmartContract');
+const { winstonErrorHandling } = require('../config/winston/');
 
 module.exports = {
   async get(req, res, next) {
     try {
-      const smartContracts = await SmartContract.find();
+      const { limit } = req.query;
+
+      const options = {
+        ...(limit && { limit: parseInt(limit, 10) }),
+        sort: {
+          createdAt: -1,
+        },
+      };
+
+      const smartContracts = await SmartContract.find(null, null, options);
       res.json({ smartContracts });
     } catch (err) {
       next(err);
@@ -48,17 +59,33 @@ module.exports = {
       const prepDeployContract = contractInstance.deploy();
       // Estimating gas for the contract
       const gas = await prepDeployContract.estimateGas();
-      // Sending the contract to the chain
-      const deployedContract = await prepDeployContract.send({ gas });
 
       const smartContract = await SmartContract.create({
         abi,
         name,
         byteCode,
-        address,
         smartContractUtf8,
+        senderAddress: address,
       });
-      debugger;
+
+      // Sending the contract to the chain
+      const deployedSmartContract = await prepDeployContract.send({ gas })
+        .once('transactionHash', (hash) => {
+          Transaction.create({
+            hash,
+            from: address,
+            deployedContract: true,
+            smartContractId: smartContract.id,
+          })
+            .catch(winstonErrorHandling);
+        })
+        .on('error', (err) => {
+          winstonErrorHandling(err);
+          SmartContract.deleteOne({ id: smartContract.id });
+        });
+
+      smartContract.contractAddress = deployedSmartContract.options.address;
+      smartContract.save();
 
       res.json({ smartContract });
     } catch (err) {

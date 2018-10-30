@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { MongoClient } = require('mongodb');
 const collections = require('./models/');
-// const winston = require('./config/winston');
+const { winstonErrorHandling } = require('./config/winston');
 const { blockListener } = require('./services/ethers/');
 const { createAllAccounts } = require('./helpers/accounts/');
 const { restartTransactionSeries } = require('./helpers/transactions/');
@@ -16,7 +16,7 @@ const mongoConnectOptions = {
 module.exports = () => {
   MongoClient.connect(mongoDbUrl, mongoConnectOptions, async (mongoConnectErr, client) => {
     if (mongoConnectErr) {
-      // winston.error(mongoConnectErr);
+      winstonErrorHandling(mongoConnectErr);
       throw mongoConnectErr;
     }
 
@@ -27,7 +27,7 @@ module.exports = () => {
 
     collections.forEach((collection) => {
       whiteblock.createCollection(collection, (err) => {
-        // if (err) winston.error(err);
+        if (err) winstonErrorHandling(err);
       });
     });
 
@@ -41,7 +41,7 @@ module.exports = () => {
 
     // Listening and recording new blocks in DB & creating all accounts
     blockListener();
-    await createAllAccounts().catch(console.log);
+    await createAllAccounts().catch(winstonErrorHandling);
     restartTransactionSeries();
 
     client.close();

@@ -1,6 +1,7 @@
 const { toWei, fromWei } = require('../services/web3/');
 const Account = require('../models/Account');
 const Transaction = require('../models/Transaction');
+const SmartContract = require('../models/SmartContract');
 const { createAllAccounts } = require('../helpers/accounts');
 const TransactionSeries = require('../models/TransactionSeries');
 const { setTransactionInterval } = require('../helpers/transactions/');
@@ -47,13 +48,27 @@ module.exports = {
         }),
       };
 
-      const transactions = await Transaction.find(query, null, options);
+      let transactions = await Transaction.find(query, null, options);
 
-      if (weiToEther) {
-        transactions.forEach(({ value }, i) => {
-          transactions[i].value = parseFloat(fromWei(value), 10).toFixed(2);
-        });
-      }
+      transactions = await Promise.all(
+        transactions.map(async (tx) => {
+          let value;
+          let smartContract;
+
+          if (weiToEther && tx.value) {
+            value = parseFloat(fromWei(tx.value), 10).toFixed(2);
+          }
+          if (tx.smartContractId) {
+            smartContract = await SmartContract.findById(tx.smartContractId);
+          }
+
+          return {
+            ...tx._doc, // eslint-disable-line no-underscore-dangle
+            ...(value, { value }),
+            ...(smartContract && { smartContract }),
+          };
+        }),
+      );
 
       res.json({ transactions });
     } catch (err) {

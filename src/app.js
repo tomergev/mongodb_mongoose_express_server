@@ -1,15 +1,18 @@
 const cors = require('cors');
 // const morgan = require('morgan');
 const express = require('express');
-const jwt = require('express-jwt');
+// const jwt = require('express-jwt');
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const boolParser = require('express-query-boolean');
 require('dotenv').config({ path: './.env' });
 const createDb = require('./db');
 const routes = require('./routes/');
-const config = require('./config/');
-// const winston = require('./config/winston/');
+// const config = require('./config/');
+const {
+  // winston,
+  winstonErrorHandling,
+} = require('./config/winston/');
 
 const app = express();
 app.use(cors());
@@ -41,7 +44,7 @@ routeKeys.forEach((key) => {
 
 // Must include the next parameter for express to know that this is the error handling function
 const errorHandling = (err, _req, res, _next) => {
-  // winston.error(err);
+  winstonErrorHandling(err);
 
   res.status(err.status || 400).send({
     message: err.message,
@@ -52,7 +55,7 @@ app.use(errorHandling);
 
 app.listen(process.env.PORT, (err) => {
   if (err) {
-    // winston.error(err);
+    winstonErrorHandling(err);
     // https://stackoverflow.com/questions/43147330/what-is-difference-between-method-process-exit1-and-process-exit0-in-node-js
     process.exit(1);
   }

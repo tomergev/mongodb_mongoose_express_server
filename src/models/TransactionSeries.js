@@ -4,33 +4,20 @@ const mongoose = require('mongoose');
 
 const transactionSeriesSchema = new mongoose.Schema(
   {
-    // userId: {
-    //   type: ObjectId,
-    //   ref: 'Users',
-    //   required: true,
-    // },
-    // chainId: {
-    //   type: ObjectId,
-    //   required: true,
-    // },
     transactionRateRange: {
       min: {
         type: Number,
-        required: true,
       },
       max: {
         type: Number,
-        required: true,
       },
     },
     numberOfTransactionsRange: {
       min: {
         type: Number,
-        required: true,
       },
       max: {
         type: Number,
-        required: true,
       },
     },
     etherOptions: {
@@ -39,9 +26,10 @@ const transactionSeriesSchema = new mongoose.Schema(
       },
       random: {
         type: Boolean,
-        required: true,
-        default: true,
       },
+    },
+    smartContractAddress: {
+      type: String,
     },
     active: {
       type: Boolean,

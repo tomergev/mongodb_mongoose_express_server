@@ -38,6 +38,7 @@ module.exports = {
       const {
         accounts,
         weiValue,
+        smartContract,
         transactionSeriesId,
         numberOfTransactionsRange,
       } = args;
@@ -75,15 +76,32 @@ module.exports = {
         }
 
         const value = weiValue === 'random' ? generateRandomNumber({ min: biggerBalance * 0.025, max: biggerBalance * 0.05 }) : weiValue;
-        txInfoArray.push({ to, from, value });
+
+        txInfoArray.push({
+          from,
+          value,
+          ...(smartContract && { data: smartContract.abiBytecode }),
+          ...(smartContract ? { to: smartContract.contractAddress } : { to }),
+        });
       }
 
-      const sendEthTransaction = async ({ to, from, value }) => {
-        await sendTransaction({ to, from, value })
-          .then(hash => Transaction.create({
-            hash, to, from, transactionSeriesId, value,
-          }))
-          .catch(winstonErrorHandling);
+      const sendEthTransaction = async ({
+        to, from, data, value,
+      }) => {
+        await sendTransaction({
+          to,
+          from,
+          ...(data && { data }),
+          ...(value && { value }),
+        })
+          .then((hash) => {
+            Transaction.create({
+              hash, to, from, transactionSeriesId, value,
+            });
+          })
+          .catch((err) => {
+            winstonErrorHandling(err);
+          });
       };
 
       Promise.all([

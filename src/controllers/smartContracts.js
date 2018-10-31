@@ -37,10 +37,10 @@ module.exports = {
       }, 1);
 
       let abi;
-      let byteCode;
+      let bytecode;
       const keys = Object.keys(output.contracts);
       keys.forEach((key) => {
-        byteCode = output.contracts[key].bytecode;
+        bytecode = output.contracts[key].bytecode; // eslint-disable-line prefer-destructuring
         abi = JSON.parse(output.contracts[key].interface);
       });
 
@@ -51,19 +51,26 @@ module.exports = {
         address,
         txInfo: {
           from: address,
-          data: `0x${byteCode}`,
+          data: `0x${bytecode}`,
         },
       });
 
       // "Deploying" (preDeploying) the contract to the chain
       const prepDeployContract = contractInstance.deploy();
-      // Estimating gas for the contract
-      const gas = await prepDeployContract.estimateGas();
+      // Estimating gas for the contract & getting abi bytecode
+      const [
+        gas,
+        abiBytecode,
+      ] = await Promise.all([
+        prepDeployContract.estimateGas(),
+        prepDeployContract.encodeABI(),
+      ]);
 
       const smartContract = await SmartContract.create({
         abi,
         name,
-        byteCode,
+        bytecode,
+        abiBytecode,
         smartContractUtf8,
         senderAddress: address,
       });

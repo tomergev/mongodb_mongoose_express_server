@@ -6,7 +6,11 @@ const smartContractSchema = new mongoose.Schema(
       type: [Map],
       required: true,
     },
-    byteCode: {
+    abiBytecode: {
+      type: String,
+      required: true,
+    },
+    bytecode: {
       type: String,
       required: true,
     },
@@ -31,6 +35,7 @@ const smartContractSchema = new mongoose.Schema(
   },
 );
 
+smartContractSchema.index({ contractAddress: 1 }, { unique: true });
 const SmartContract = mongoose.model('smartcontracts', smartContractSchema);
 
 module.exports = SmartContract;

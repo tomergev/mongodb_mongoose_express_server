@@ -138,12 +138,30 @@ module.exports = {
   },
 
   async checkIfTransactionsInProgress(req, res, next) {
-    try {
-      const transactionSeries = await TransactionSeries.find({ active: true });
+    // try {
+    //   const activeTransactionSeries = await TransactionSeries.find({ active: true });
+    //   const thereIsActiveTransactionSeries = !!activeTransactionSeries.length;
 
-      if (transactionSeries.length) {
-        next(
-          new Error('There is already a transaction series in place. Please cancel that transaction series before creating a new one'),
+    //   req.query = {
+    //     ...req.query,
+    //     thereIsActiveTransactionSeries,
+    //   };
+    // } catch (err) {
+    //   req.query = {
+    //     ...req.query,
+    //     err,
+    //   };
+    // } finally {
+    //   next();
+    // }
+
+
+    try {
+      const activeTransactionSeries = await TransactionSeries.find({ active: true });
+
+      if (activeTransactionSeries.length) {
+        throw new Error(
+          'There is already a transaction series in place. Please cancel that transaction series before creating a new one',
         );
       } else {
         next();
@@ -159,26 +177,37 @@ module.exports = {
         etherOptions,
         transactionRateRange,
         numberOfTransactionsRange,
+        selectedSmartContractAddress: smartContractAddress,
       } = req.body;
 
-      const { value, random } = etherOptions;
-      const weiValue = random === 'true' ? 'random' : toWei(`${value}`);
+      let weiValue;
+      if (etherOptions) {
+        const { value, random } = etherOptions;
+        weiValue = random === 'true' ? 'random' : toWei(`${value}`);
+      }
 
       let accounts = await Account.find();
+      if (!accounts.length) {
+        accounts = await createAllAccounts();
+      }
+
+      let smartContract;
+      if (smartContractAddress) {
+        smartContract = await SmartContract.findOne({ contractAddress: smartContractAddress });
+      }
+
       const transactionSeries = await TransactionSeries.create({
         etherOptions,
+        smartContractAddress,
         transactionRateRange,
         numberOfTransactionsRange,
         seriesStartDatetime: new Date(),
       });
 
-      if (!accounts.length) {
-        accounts = await createAllAccounts();
-      }
-
       setTransactionInterval({
         accounts,
         weiValue,
+        smartContract,
         transactionRateRange,
         numberOfTransactionsRange,
         transactionSeriesId: transactionSeries.id,

@@ -87,6 +87,7 @@ transactionSchema.post('save', ({ to, from, transactionSeriesId }) => {
     .catch(winstonErrorHandling);
 });
 
+transactionSchema.index({ hash: 1 }, { unique: true });
 const Transaction = mongoose.model('transactions', transactionSchema);
 
 module.exports = Transaction;

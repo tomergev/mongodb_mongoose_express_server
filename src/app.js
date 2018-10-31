@@ -46,7 +46,7 @@ routeKeys.forEach((key) => {
 const errorHandling = (err, _req, res, _next) => {
   winstonErrorHandling(err);
 
-  res.status(err.status || 400).send({
+  res.status(err.status || 400).json({
     message: err.message,
     error: err,
   });

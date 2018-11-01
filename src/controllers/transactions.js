@@ -1,4 +1,8 @@
-const { toWei, fromWei } = require('../services/web3/');
+const {
+  toWei,
+  fromWei,
+  createContractInstance,
+} = require('../services/web3/');
 const Account = require('../models/Account');
 const Transaction = require('../models/Transaction');
 const SmartContract = require('../models/SmartContract');
@@ -59,7 +63,7 @@ module.exports = {
             value = parseFloat(fromWei(tx.value), 10).toFixed(2);
           }
           if (tx.smartContractId) {
-            smartContract = await SmartContract.findById(tx.smartContractId);
+            smartContract = await SmartContract.findById(tx.smartContractId, 'contractAddress');
           }
 
           return {
@@ -138,24 +142,6 @@ module.exports = {
   },
 
   async checkIfTransactionsInProgress(req, res, next) {
-    // try {
-    //   const activeTransactionSeries = await TransactionSeries.find({ active: true });
-    //   const thereIsActiveTransactionSeries = !!activeTransactionSeries.length;
-
-    //   req.query = {
-    //     ...req.query,
-    //     thereIsActiveTransactionSeries,
-    //   };
-    // } catch (err) {
-    //   req.query = {
-    //     ...req.query,
-    //     err,
-    //   };
-    // } finally {
-    //   next();
-    // }
-
-
     try {
       const activeTransactionSeries = await TransactionSeries.find({ active: true });
 
@@ -177,8 +163,11 @@ module.exports = {
         etherOptions,
         transactionRateRange,
         numberOfTransactionsRange,
+        selectedSmartContractMethod,
         selectedSmartContractAddress: smartContractAddress,
       } = req.body;
+
+      const selectedSmartContractArgs = req.body.selectedSmartContractArgs || [];
 
       let weiValue;
       if (etherOptions) {
@@ -192,8 +181,15 @@ module.exports = {
       }
 
       let smartContract;
+      let selectSmartContractMethodAbi;
       if (smartContractAddress) {
         smartContract = await SmartContract.findOne({ contractAddress: smartContractAddress });
+        const smartContractInstance = await createContractInstance({
+          abi: smartContract.abi,
+          address: smartContract.contractAddress,
+        });
+        const smartContractMethod = smartContractInstance.methods['eventEmitter'](...selectedSmartContractArgs);
+        selectSmartContractMethodAbi = smartContractMethod.encodeABI();
       }
 
       const transactionSeries = await TransactionSeries.create({
@@ -210,6 +206,7 @@ module.exports = {
         smartContract,
         transactionRateRange,
         numberOfTransactionsRange,
+        selectSmartContractMethodAbi,
         transactionSeriesId: transactionSeries.id,
       });
 

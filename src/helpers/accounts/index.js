@@ -4,7 +4,7 @@ const {
 } = require('../../services/web3/');
 const Account = require('../../models/Account');
 const { fromWei } = require('../../services/web3/');
-const { winstonErrorHandling } = require('../../config/winston/');
+const { winstonErrorLogging } = require('../../config/winston/');
 
 module.exports = {
   createAllAccounts() {
@@ -35,7 +35,7 @@ module.exports = {
         await Account.bulkWrite(insertAccounts);
         resolve(accounts);
       } catch (err) {
-        winstonErrorHandling(err);
+        winstonErrorLogging(err);
         reject(err);
       }
     });

@@ -23,9 +23,11 @@ const transactionSeriesSchema = new mongoose.Schema(
     etherOptions: {
       value: {
         type: Number,
+        default: 0,
       },
       random: {
         type: Boolean,
+        default: false,
       },
     },
     smartContractAddress: {

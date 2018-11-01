@@ -3,11 +3,7 @@ const mongoose = require('mongoose');
 const smartContractSchema = new mongoose.Schema(
   {
     abi: {
-      type: [Map],
-      required: true,
-    },
-    abiBytecode: {
-      type: String,
+      type: [],
       required: true,
     },
     bytecode: {
@@ -25,7 +21,7 @@ const smartContractSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    name: {
+    contractName: {
       type: String,
       required: true,
     },

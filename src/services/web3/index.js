@@ -21,10 +21,12 @@ const web3Calls = methodKeys.reduce((obj, key) => {
 
 module.exports = {
   ...web3Calls,
+  // web3 must be exported because it's needed when using the event emitter https://web3js.readthedocs.io/en/1.0/callbacks-promises-events.html#promievent
+  web3,
   // From & to wei is not a func and therefore the executeWeb3Command wont work with this action
   toWei: number => web3.utils.toWei(number),
   fromWei: number => web3.utils.fromWei(number),
-  createContract: ({ abi, address, txInfo }) => {
+  createContractInstance: ({ abi, address, txInfo }) => {
     const contractInstance = new web3.eth.Contract(abi, address, txInfo);
     return contractInstance;
   },

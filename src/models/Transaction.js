@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Account = require('./Account');
 const TransactionSeries = require('./TransactionSeries');
-const { winstonErrorHandling } = require('../config/winston/');
+const { winstonErrorLogging } = require('../config/winston/');
 
 const { ObjectId } = mongoose.Schema.Types;
 
@@ -9,7 +9,6 @@ const transactionSchema = new mongoose.Schema(
   {
     transactionSeriesId: {
       type: ObjectId,
-      // required: true,
       ref: 'TransactionSeries',
     },
     smartContractId: {
@@ -18,7 +17,7 @@ const transactionSchema = new mongoose.Schema(
     hash: {
       type: String,
       required: true,
-      unique: true,
+      // unique: true,
     },
     from: {
       type: String,
@@ -57,6 +56,15 @@ const transactionSchema = new mongoose.Schema(
     input: {
       type: String,
     },
+    cumulativeGasUsed: {
+      type: Number,
+    },
+    logs: {
+      type: [],
+    },
+    contractAddress: {
+      type: String,
+    },
     pending: {
       type: Boolean,
       required: true,
@@ -84,10 +92,10 @@ transactionSchema.post('save', ({ to, from, transactionSeriesId }) => {
       { $inc: { numberOfTransactionsSent: 1 } },
     )),
   ])
-    .catch(winstonErrorHandling);
+    .catch(winstonErrorLogging);
 });
 
-transactionSchema.index({ hash: 1 }, { unique: true });
+// transactionSchema.index({ hash: 1 }, { unique: true });
 const Transaction = mongoose.model('transactions', transactionSchema);
 
 module.exports = Transaction;

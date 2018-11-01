@@ -1,13 +1,12 @@
 const {
+  web3,
   toWei,
   getBalance,
   getTransaction,
-  sendTransaction,
-  getTransactionReceipt,
 } = require('../../services/web3/');
 const Account = require('../../models/Account');
 const Transaction = require('../../models/Transaction');
-const { winstonErrorHandling } = require('../../config/winston/');
+const { winstonErrorLogging } = require('../../config/winston/');
 const TransactionSeries = require('../../models/TransactionSeries');
 const generateRandomNumber = require('../../lib/generateRandomNumber/');
 const generateMultipleDifferentRandomNumbers = require('../../lib/generateMultipleDifferentRandomNumbers/');
@@ -29,7 +28,7 @@ module.exports = {
         randomMillisecondInterval,
       );
     } catch (err) {
-      winstonErrorHandling(err);
+      winstonErrorLogging(err);
     }
   },
 
@@ -41,6 +40,7 @@ module.exports = {
         smartContract,
         transactionSeriesId,
         numberOfTransactionsRange,
+        selectSmartContractMethodAbi,
       } = args;
 
       const limit = generateRandomNumber(numberOfTransactionsRange) * 2;
@@ -80,28 +80,66 @@ module.exports = {
         txInfoArray.push({
           from,
           value,
-          ...(smartContract && { data: smartContract.abiBytecode }),
           ...(smartContract ? { to: smartContract.contractAddress } : { to }),
+          ...(selectSmartContractMethodAbi && { data: selectSmartContractMethodAbi }),
         });
       }
 
       const sendEthTransaction = async ({
         to, from, data, value,
       }) => {
-        await sendTransaction({
+        const txInfo = {
           to,
           from,
           ...(data && { data }),
           ...(value && { value }),
-        })
-          .then((hash) => {
+        };
+
+        await web3.eth.sendTransaction(txInfo)
+          .once('receipt', async (receipt) => {
+            const transaction = await getTransaction(receipt.transactionHash);
+            const {
+              logs,
+              status,
+              gasUsed,
+              contractAddress,
+              cumulativeGasUsed,
+            } = receipt;
+            const {
+              gas,
+              hash,
+              nonce,
+              input,
+              gasPrice,
+              blockHash,
+              blockNumber,
+              transactionIndex,
+            } = transaction;
+
             Transaction.create({
-              hash, to, from, transactionSeriesId, value,
-            });
+              gas,
+              hash,
+              logs,
+              input,
+              nonce,
+              gasUsed,
+              gasPrice,
+              blockHash,
+              blockNumber,
+              txValue: value,
+              pending: !status,
+              transactionIndex,
+              cumulativeGasUsed,
+              to: transaction.to,
+              transactionSeriesId,
+              from: transaction.from,
+              value: transaction.value,
+              ...(contractAddress && { contractAddress }),
+              ...(smartContract && { smartContractId: smartContract.id }),
+            })
+              .catch(winstonErrorLogging);
           })
-          .catch((err) => {
-            winstonErrorHandling(err);
-          });
+          .on('error', winstonErrorLogging);
       };
 
       Promise.all([
@@ -109,7 +147,7 @@ module.exports = {
         module.exports.setTransactionInterval(args),
       ]);
     } catch (err) {
-      winstonErrorHandling(err);
+      winstonErrorLogging(err);
     }
   },
 
@@ -142,66 +180,7 @@ module.exports = {
         });
       });
     } catch (err) {
-      winstonErrorHandling(err);
-    }
-  },
-
-  async createTransactionDocs(txHashs) {
-    try {
-      if (!txHashs.length) return;
-
-      const transactions = await Promise.all(
-        txHashs.map(hash => Promise.all([
-          getTransaction(hash),
-          getTransactionReceipt(hash),
-        ])),
-      );
-
-      const updateTransactions = transactions.map(([transaction, receipt]) => {
-        const {
-          status,
-          gasUsed,
-        } = receipt;
-        const {
-          to,
-          gas,
-          hash,
-          from,
-          value,
-          nonce,
-          input,
-          gasPrice,
-          blockHash,
-          blockNumber,
-          transactionIndex,
-        } = transaction;
-
-        return {
-          updateOne: {
-            filter: { hash },
-            update: {
-              to,
-              gas,
-              hash,
-              from,
-              value,
-              input,
-              nonce,
-              gasUsed,
-              gasPrice,
-              blockHash,
-              blockNumber,
-              txValue: value,
-              pending: !status,
-              transactionIndex,
-            },
-          },
-        };
-      });
-
-      Transaction.bulkWrite(updateTransactions);
-    } catch (err) {
-      winstonErrorHandling(err);
+      winstonErrorLogging(err);
     }
   },
 };

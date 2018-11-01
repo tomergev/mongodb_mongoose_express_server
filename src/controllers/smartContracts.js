@@ -1,8 +1,11 @@
 const solc = require('solc');
 const Transaction = require('../models/Transaction');
-const { createContract } = require('../services/web3/');
 const SmartContract = require('../models/SmartContract');
-const { winstonErrorHandling } = require('../config/winston/');
+const { winstonErrorLogging } = require('../config/winston/');
+const {
+  getTransaction,
+  createContractInstance,
+} = require('../services/web3/');
 
 module.exports = {
   async get(req, res, next) {
@@ -23,11 +26,21 @@ module.exports = {
     }
   },
 
+  async findOne(req, res, next) {
+    try {
+      const { contractAddress } = req.params;
+      const smartContract = await SmartContract.findOne({ contractAddress });
+      res.json({ smartContract });
+    } catch (err) {
+      next(err);
+    }
+  },
+
   async deploy(req, res, next) {
     try {
       const {
-        name,
         address,
+        contractName,
         smartContractUtf8,
       } = req.body;
 
@@ -46,7 +59,7 @@ module.exports = {
 
 
       // Creating the contract instance
-      const contractInstance = await createContract({
+      const contractInstance = await createContractInstance({
         abi,
         address,
         txInfo: {
@@ -68,26 +81,63 @@ module.exports = {
 
       const smartContract = await SmartContract.create({
         abi,
-        name,
         bytecode,
         abiBytecode,
+        contractName,
         smartContractUtf8,
         senderAddress: address,
       });
 
       // Sending the contract to the chain
       const deployedSmartContract = await prepDeployContract.send({ gas })
-        .once('transactionHash', (hash) => {
-          Transaction.create({
+        .once('receipt', async (receipt) => {
+          const transaction = await getTransaction(receipt.transactionHash);
+
+          const {
+            logs,
+            status,
+            gasUsed,
+            contractAddress,
+            cumulativeGasUsed,
+          } = receipt;
+          const {
+            to,
             hash,
-            from: address,
+            from,
+            value,
+            nonce,
+            input,
+            gasPrice,
+            blockHash,
+            blockNumber,
+            transactionIndex,
+          } = transaction;
+
+          Transaction.create({
+            to,
+            logs,
+            hash,
+            from,
+            value,
+            nonce,
+            input,
+            gasUsed,
+            gasPrice,
+            blockHash,
+            blockNumber,
+            txValue: value,
+            contractAddress,
+            pending: !status,
+            transactionIndex,
+            cumulativeGasUsed,
+            gas: transaction.gas,
             deployedContract: true,
             smartContractId: smartContract.id,
           })
-            .catch(winstonErrorHandling);
+            .catch(winstonErrorLogging);
         })
         .on('error', (err) => {
-          winstonErrorHandling(err);
+          winstonErrorLogging(err);
           SmartContract.deleteOne({ id: smartContract.id });
         });
 

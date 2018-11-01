@@ -2,8 +2,7 @@ const Block = require('../../models/Block');
 const Account = require('../../models/Account');
 const { getBlock } = require('../../services/web3/');
 const { createAllAccounts } = require('../accounts/');
-const { createTransactionDocs } = require('../transactions/');
-const { winstonErrorHandling } = require('../../config/winston/');
+const { winstonErrorLogging } = require('../../config/winston/');
 
 module.exports = {
   async formatBlockData(blockNumber) {
@@ -24,7 +23,6 @@ module.exports = {
         hash,
       } = await getBlock(blockNumber);
 
-      createTransactionDocs(transactions);
       const numberOfUncles = uncles.length;
       const numberOfProccessedTransactions = transactions.length;
 
@@ -60,9 +58,9 @@ module.exports = {
         miner,
       };
 
-      Block.create(blockInfo, winstonErrorHandling);
+      Block.create(blockInfo, winstonErrorLogging);
     } catch (err) {
-      winstonErrorHandling(err);
+      winstonErrorLogging(err);
     }
   },
 };

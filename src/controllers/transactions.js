@@ -52,27 +52,13 @@ module.exports = {
         }),
       };
 
-      let transactions = await Transaction.find(query, null, options);
+      const transactions = await Transaction.find(query, null, options);
 
-      transactions = await Promise.all(
-        transactions.map(async (tx) => {
-          let value;
-          let smartContract;
-
-          if (weiToEther && tx.value) {
-            value = parseFloat(fromWei(tx.value), 10).toFixed(2);
-          }
-          if (tx.smartContractId) {
-            smartContract = await SmartContract.findById(tx.smartContractId, 'contractAddress');
-          }
-
-          return {
-            ...tx._doc, // eslint-disable-line no-underscore-dangle
-            ...(value, { value }),
-            ...(smartContract && { smartContract }),
-          };
-        }),
-      );
+      if (weiToEther) {
+        transactions.forEach((tx, i) => {
+          transactions[i].value = parseFloat(fromWei(tx.value), 10).toFixed(2);
+        });
+      }
 
       res.json({ transactions });
     } catch (err) {
@@ -162,12 +148,16 @@ module.exports = {
       const {
         etherOptions,
         transactionRateRange,
+        selectedSmartContract,
         numberOfTransactionsRange,
-        selectedSmartContractMethod,
-        selectedSmartContractAddress: smartContractAddress,
       } = req.body;
 
-      const selectedSmartContractArgs = req.body.selectedSmartContractArgs || [];
+      const {
+        args,
+        selectedMethod,
+        selectedAddress: smartContractAddress,
+      } = selectedSmartContract;
+      const selectedSmartContractArgs = args.map(({ value }) => value);
 
       let weiValue;
       if (etherOptions) {
@@ -188,7 +178,7 @@ module.exports = {
           abi: smartContract.abi,
           address: smartContract.contractAddress,
         });
-        const smartContractMethod = smartContractInstance.methods['eventEmitter'](...selectedSmartContractArgs);
+        const smartContractMethod = smartContractInstance.methods[selectedMethod](...selectedSmartContractArgs); // eslint-disable-line max-len
         selectSmartContractMethodAbi = smartContractMethod.encodeABI();
       }
 

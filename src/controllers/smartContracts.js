@@ -1,9 +1,10 @@
 const solc = require('solc');
-const Transaction = require('../models/Transaction');
 const SmartContract = require('../models/SmartContract');
 const { winstonErrorLogging } = require('../config/winston/');
+const { createTransactionDoc } = require('../helpers/transactions/');
 const {
-  getTransaction,
+  fromWei,
+  getBalance,
   createContractInstance,
 } = require('../services/web3/');
 
@@ -29,8 +30,22 @@ module.exports = {
   async findOne(req, res, next) {
     try {
       const { contractAddress } = req.params;
-      const smartContract = await SmartContract.findOne({ contractAddress });
-      res.json({ smartContract });
+
+      const [
+        balanceWei,
+        smartContract,
+      ] = await Promise.all([
+        getBalance(contractAddress),
+        SmartContract.findOne({ contractAddress }),
+      ]);
+
+      const balanceEther = fromWei(balanceWei);
+
+      res.json({
+        balanceWei,
+        balanceEther,
+        smartContract,
+      });
     } catch (err) {
       next(err);
     }
@@ -71,71 +86,27 @@ module.exports = {
       // "Deploying" (preDeploying) the contract to the chain
       const prepDeployContract = contractInstance.deploy();
       // Estimating gas for the contract & getting abi bytecode
-      const [
-        gas,
-        abiBytecode,
-      ] = await Promise.all([
-        prepDeployContract.estimateGas(),
-        prepDeployContract.encodeABI(),
-      ]);
+      const gas = await prepDeployContract.estimateGas();
+
+      const methodNamesAndInputs = {};
+      abi.forEach(({ type, name, inputs }) => {
+        if (type === 'function') {
+          methodNamesAndInputs[name] = inputs;
+        }
+      });
 
       const smartContract = await SmartContract.create({
         abi,
         bytecode,
-        abiBytecode,
         contractName,
         smartContractUtf8,
+        methodNamesAndInputs,
         senderAddress: address,
       });
 
       // Sending the contract to the chain
       const deployedSmartContract = await prepDeployContract.send({ gas })
-        .once('receipt', async (receipt) => {
-          const transaction = await getTransaction(receipt.transactionHash);
-
-          const {
-            logs,
-            status,
-            gasUsed,
-            contractAddress,
-            cumulativeGasUsed,
-          } = receipt;
-          const {
-            to,
-            hash,
-            from,
-            value,
-            nonce,
-            input,
-            gasPrice,
-            blockHash,
-            blockNumber,
-            transactionIndex,
-          } = transaction;
-
-          Transaction.create({
-            to,
-            logs,
-            hash,
-            from,
-            value,
-            nonce,
-            input,
-            gasUsed,
-            gasPrice,
-            blockHash,
-            blockNumber,
-            txValue: value,
-            contractAddress,
-            pending: !status,
-            transactionIndex,
-            cumulativeGasUsed,
-            gas: transaction.gas,
-            deployedContract: true,
-            smartContractId: smartContract.id,
-          })
-            .catch(winstonErrorLogging);
-        })
+        .once('receipt', receipt => createTransactionDoc({ receipt, smartContract }))
         .on('error', (err) => {
           winstonErrorLogging(err);
           SmartContract.deleteOne({ id: smartContract.id });

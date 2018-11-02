@@ -88,57 +88,13 @@ module.exports = {
       const sendEthTransaction = async ({
         to, from, data, value,
       }) => {
-        const txInfo = {
+        await web3.eth.sendTransaction({
           to,
           from,
           ...(data && { data }),
           ...(value && { value }),
-        };
-
-        await web3.eth.sendTransaction(txInfo)
-          .once('receipt', async (receipt) => {
-            const transaction = await getTransaction(receipt.transactionHash);
-            const {
-              logs,
-              status,
-              gasUsed,
-              contractAddress,
-              cumulativeGasUsed,
-            } = receipt;
-            const {
-              gas,
-              hash,
-              nonce,
-              input,
-              gasPrice,
-              blockHash,
-              blockNumber,
-              transactionIndex,
-            } = transaction;
-
-            Transaction.create({
-              gas,
-              hash,
-              logs,
-              input,
-              nonce,
-              gasUsed,
-              gasPrice,
-              blockHash,
-              blockNumber,
-              txValue: value,
-              pending: !status,
-              transactionIndex,
-              cumulativeGasUsed,
-              to: transaction.to,
-              transactionSeriesId,
-              from: transaction.from,
-              value: transaction.value,
-              ...(contractAddress && { contractAddress }),
-              ...(smartContract && { smartContractId: smartContract.id }),
-            })
-              .catch(winstonErrorLogging);
-          })
+        })
+          .once('receipt', receipt => module.exports.createTransactionDoc({ receipt, smartContract, transactionSeriesId }))
           .on('error', winstonErrorLogging);
       };
 
@@ -146,6 +102,55 @@ module.exports = {
         txInfoArray.map(sendEthTransaction),
         module.exports.setTransactionInterval(args),
       ]);
+    } catch (err) {
+      winstonErrorLogging(err);
+    }
+  },
+
+  async createTransactionDoc({ receipt, smartContract, transactionSeriesId }) {
+    try {
+      const {
+        logs,
+        status,
+        gasUsed,
+        contractAddress,
+        cumulativeGasUsed,
+      } = receipt;
+      const {
+        to,
+        gas,
+        hash,
+        from,
+        nonce,
+        input,
+        value,
+        gasPrice,
+        blockHash,
+        blockNumber,
+        transactionIndex,
+      } = await getTransaction(receipt.transactionHash);
+
+      Transaction.create({
+        to,
+        gas,
+        hash,
+        logs,
+        from,
+        value,
+        input,
+        nonce,
+        gasUsed,
+        gasPrice,
+        blockHash,
+        blockNumber,
+        txValue: value,
+        pending: !status,
+        transactionIndex,
+        cumulativeGasUsed,
+        ...(smartContract && { smartContractId: smartContract.id }),
+        ...(smartContract && { contractAddress: smartContract.contractAddress || contractAddress }),
+        ...(transactionSeriesId ? { transactionSeriesId } : { deployedContract: true }),
+      });
     } catch (err) {
       winstonErrorLogging(err);
     }

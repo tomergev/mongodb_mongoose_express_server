@@ -6,26 +6,33 @@ module.exports = {
   async get(req, res, next) {
     try {
       const {
+        limit,
+        $regex,
         rangeLow,
         rangeHigh,
+        propeties,
       } = req.query;
 
-      const query = {};
-
-      if (rangeLow || rangeHigh) {
-        query.blockNumber = {
-          ...(rangeLow && { $gte: parseInt(rangeLow, 10) }),
-          ...(rangeHigh && { $lte: parseInt(rangeHigh, 10) }),
-        };
-      }
+      const query = {
+        ...($regex && {
+          blockHash: { $regex },
+        }),
+        ...((rangeLow || rangeHigh) && {
+          blockNumber: {
+            ...(rangeLow && { $gte: parseInt(rangeLow, 10) }),
+            ...(rangeHigh && { $lte: parseInt(rangeHigh, 10) }),
+          },
+        }),
+      };
 
       const options = {
         sort: {
           blockNumber: -1,
         },
+        ...(limit && { limit: parseInt(limit, 10) }),
       };
 
-      const blocks = await Block.find(query, null, options);
+      const blocks = await Block.find(query, propeties, options);
       res.json({ blocks });
     } catch (err) {
       next(err);

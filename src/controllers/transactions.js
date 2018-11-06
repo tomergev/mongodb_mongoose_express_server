@@ -15,8 +15,10 @@ module.exports = {
     try {
       const {
         limit,
+        $regex,
         address,
         dateHigh,
+        properties,
         weiToEther,
         blockNumber,
         contractAddress,
@@ -32,10 +34,10 @@ module.exports = {
       };
 
       const query = {
-        ...(blockNumber && {
-          blockNumber: {
-            $eq: blockNumber,
-          },
+        ...(blockNumber && { blockNumber }),
+        ...(deployedContract && { deployedContract }),
+        ...($regex && {
+          hash: { $regex },
         }),
         ...(dateHigh && {
           createdAt: {
@@ -59,10 +61,9 @@ module.exports = {
             { from: contractAddress },
           ],
         }),
-        ...(deployedContract && { deployedContract }),
       };
 
-      const transactions = await Transaction.find(query, null, options);
+      const transactions = await Transaction.find(query, properties, options);
 
       if (weiToEther) {
         transactions.forEach((tx, i) => {

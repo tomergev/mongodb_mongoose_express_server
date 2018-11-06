@@ -26,14 +26,14 @@ module.exports = {
       const numberOfUncles = uncles.length;
       const numberOfProccessedTransactions = transactions.length;
 
-      let allBalancesAndAddresses = await Account.find({}, 'balance address');
+      let allBalancesAndAddresses = await Account.find({}, 'balanceWei address');
 
       if (!allBalancesAndAddresses.length) {
         allBalancesAndAddresses = await createAllAccounts();
       }
 
-      const accountBalances = allBalancesAndAddresses.reduce((obj, { address, balance }) => {
-        obj[address] = balance; // eslint-disable-line no-param-reassign
+      const accountBalances = allBalancesAndAddresses.reduce((obj, { address, balanceWei }) => {
+        obj[address] = balanceWei; // eslint-disable-line no-param-reassign
         return obj;
       }, {});
 

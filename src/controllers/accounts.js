@@ -9,13 +9,23 @@ const {
 module.exports = {
   async get(req, res, next) {
     try {
-      const { limit } = req.query;
+      const {
+        limit,
+        $regex,
+        properties,
+      } = req.query;
+
+      const query = {
+        ...($regex && {
+          address: { $regex },
+        }),
+      };
 
       const options = {
         ...(limit && { limit: parseInt(limit, 10) }),
       };
 
-      const accounts = await Account.find(null, null, options);
+      const accounts = await Account.find(query, properties, options);
       res.json({ accounts });
     } catch (err) {
       next(err);

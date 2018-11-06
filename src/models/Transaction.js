@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Account = require('./Account');
+const SmartContract = require('./SmartContract');
 const TransactionSeries = require('./TransactionSeries');
 const { winstonErrorLogging } = require('../config/winston/');
 
@@ -81,7 +82,9 @@ const transactionSchema = new mongoose.Schema(
   },
 );
 
-transactionSchema.post('save', ({ to, from, transactionSeriesId }) => {
+transactionSchema.post('save', ({
+  to, from, smartContractId, deployedContract, transactionSeriesId,
+}) => {
   Promise.all([
     Account.findOneAndUpdate({ address: from }, { $inc: { totalSentTransactions: 1 } }),
     // Checking if "to" exists. When deploying a contract, there is no "to" value
@@ -90,6 +93,10 @@ transactionSchema.post('save', ({ to, from, transactionSeriesId }) => {
     (transactionSeriesId && TransactionSeries.findOneAndUpdate(
       { _id: transactionSeriesId },
       { $inc: { numberOfTransactionsSent: 1 } },
+    )),
+    ((smartContractId && !deployedContract) && SmartContract.findOneAndUpdate(
+      { _id: smartContractId },
+      { $inc: { transactionCount: 1 } },
     )),
   ])
     .catch(winstonErrorLogging);

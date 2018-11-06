@@ -19,6 +19,8 @@ module.exports = {
         dateHigh,
         weiToEther,
         blockNumber,
+        contractAddress,
+        deployedContract,
         transactionIndex,
       } = req.query;
 
@@ -30,10 +32,11 @@ module.exports = {
       };
 
       const query = {
-        blockNumber: {
-          $ne: null,
-          ...(blockNumber && { $eq: blockNumber }),
-        },
+        ...(blockNumber && {
+          blockNumber: {
+            $eq: blockNumber,
+          },
+        }),
         ...(dateHigh && {
           createdAt: {
             $lte: new Date(dateHigh),
@@ -50,6 +53,13 @@ module.exports = {
             { from: address },
           ],
         }),
+        ...(contractAddress && {
+          $or: [
+            { to: contractAddress },
+            { from: contractAddress },
+          ],
+        }),
+        ...(deployedContract && { deployedContract }),
       };
 
       const transactions = await Transaction.find(query, null, options);
@@ -152,11 +162,15 @@ module.exports = {
         numberOfTransactionsRange,
       } = req.body;
 
-      const {
-        args,
-        selectedMethod,
-        selectedAddress: smartContractAddress,
-      } = selectedSmartContract;
+      let args = [];
+      let smartContractAddress;
+      let selectedContractMethod;
+      if (selectedSmartContract) {
+        args = selectedSmartContract.args; // eslint-disable-line prefer-destructuring
+        smartContractAddress = selectedSmartContract.selectedAddress;
+        selectedContractMethod = selectedSmartContract.selectedMethod;
+      }
+
       const selectedSmartContractArgs = args.map(({ value }) => value);
 
       let weiValue;
@@ -178,7 +192,7 @@ module.exports = {
           abi: smartContract.abi,
           address: smartContract.contractAddress,
         });
-        const smartContractMethod = smartContractInstance.methods[selectedMethod](...selectedSmartContractArgs); // eslint-disable-line max-len
+        const smartContractMethod = smartContractInstance.methods[selectedContractMethod](...selectedSmartContractArgs); // eslint-disable-line max-len
         selectSmartContractMethodAbi = smartContractMethod.encodeABI();
       }
 

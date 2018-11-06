@@ -438,3 +438,194 @@
   [Symbol(level)]: 'error',
   [Symbol(message)]:
    '{"error":{},"level":"error","message":"uncaughtException: Invalid left-hand side in assignment\\n/home/tomer/whiteblock-mongodb/src/controllers/smartContracts.js:75\\n          await deploymentTransactionHash = hash;\\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n\\nReferenceError: Invalid left-hand side in assignment\\n    at new Script (vm.js:74:7)\\n    at createScript (vm.js:246:10)\\n    at Object.runInThisContext (vm.js:298:10)\\n    at Module._compile (internal/modules/cjs/loader.js:657:28)\\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)\\n    at Module.load (internal/modules/cjs/loader.js:599:32)\\n    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)\\n    at Function.Module._load (internal/modules/cjs/loader.js:530:3)\\n    at Module.require (internal/modules/cjs/loader.js:637:17)\\n    at require (internal/modules/cjs/helpers.js:20:18)\\n    at Object.<anonymous> (/home/tomer/whiteblock-mongodb/src/routes/smartContracts.js:2:34)\\n    at Module._compile (internal/modules/cjs/loader.js:689:30)\\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)\\n    at Module.load (internal/modules/cjs/loader.js:599:32)\\n    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)\\n    at Function.Module._load (internal/modules/cjs/loader.js:530:3)\\n    at Module.require (internal/modules/cjs/loader.js:637:17)\\n    at require (internal/modules/cjs/helpers.js:20:18)\\n    at allFileNames.forEach (/home/tomer/whiteblock-mongodb/src/routes/index.js:9:48)\\n    at Array.forEach (<anonymous>)\\n    at Object.<anonymous> (/home/tomer/whiteblock-mongodb/src/routes/index.js:6:14)\\n    at Module._compile (internal/modules/cjs/loader.js:689:30)","stack":"/home/tomer/whiteblock-mongodb/src/controllers/smartContracts.js:75\\n          await deploymentTransactionHash = hash;\\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n\\nReferenceError: Invalid left-hand side in assignment\\n    at new Script (vm.js:74:7)\\n    at createScript (vm.js:246:10)\\n    at Object.runInThisContext (vm.js:298:10)\\n    at Module._compile (internal/modules/cjs/loader.js:657:28)\\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)\\n    at Module.load (internal/modules/cjs/loader.js:599:32)\\n    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)\\n    at Function.Module._load (internal/modules/cjs/loader.js:530:3)\\n    at Module.require (internal/modules/cjs/loader.js:637:17)\\n    at require (internal/modules/cjs/helpers.js:20:18)\\n    at Object.<anonymous> (/home/tomer/whiteblock-mongodb/src/routes/smartContracts.js:2:34)\\n    at Module._compile (internal/modules/cjs/loader.js:689:30)\\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)\\n    at Module.load (internal/modules/cjs/loader.js:599:32)\\n    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)\\n    at Function.Module._load (internal/modules/cjs/loader.js:530:3)\\n    at Module.require (internal/modules/cjs/loader.js:637:17)\\n    at require (internal/modules/cjs/helpers.js:20:18)\\n    at allFileNames.forEach (/home/tomer/whiteblock-mongodb/src/routes/index.js:9:48)\\n    at Array.forEach (<anonymous>)\\n    at Object.<anonymous> (/home/tomer/whiteblock-mongodb/src/routes/index.js:6:14)\\n    at Module._compile (internal/modules/cjs/loader.js:689:30)","exception":true,"date":"Tue Oct 30 2018 15:08:46 GMT-0700 (Pacific Daylight Time)","process":{"pid":25816,"uid":1000,"gid":1000,"cwd":"/home/tomer/whiteblock-mongodb","execPath":"/home/tomer/.nvm/versions/node/v10.7.0/bin/node","version":"v10.7.0","argv":["/home/tomer/.nvm/versions/node/v10.7.0/bin/node","/home/tomer/whiteblock-mongodb/src/app.js"],"memoryUsage":{"rss":92041216,"heapTotal":63746048,"heapUsed":39744504,"external":37432297}},"os":{"loadavg":[0.962890625,0.96044921875,0.7900390625],"uptime":20333},"trace":[{"column":7,"file":"vm.js","function":"new Script","line":74,"method":null,"native":false},{"column":10,"file":"vm.js","function":"createScript","line":246,"method":null,"native":false},{"column":10,"file":"vm.js","function":"Object.runInThisContext","line":298,"method":"runInThisContext","native":false},{"column":28,"file":"internal/modules/cjs/loader.js","function":"Module._compile","line":657,"method":"_compile","native":false},{"column":10,"file":"internal/modules/cjs/loader.js","function":"Module._extensions..js","line":700,"method":".js","native":false},{"column":32,"file":"internal/modules/cjs/loader.js","function":"Module.load","line":599,"method":"load","native":false},{"column":12,"file":"internal/modules/cjs/loader.js","function":"tryModuleLoad","line":538,"method":null,"native":false},{"column":3,"file":"internal/modules/cjs/loader.js","function":"Module._load","line":530,"method":"_load","native":false},{"column":17,"file":"internal/modules/cjs/loader.js","function":"Module.require","line":637,"method":"require","native":false},{"column":18,"file":"internal/modules/cjs/helpers.js","function":"require","line":20,"method":null,"native":false},{"column":34,"file":"/home/tomer/whiteblock-mongodb/src/routes/smartContracts.js","function":null,"line":2,"method":null,"native":false},{"column":30,"file":"internal/modules/cjs/loader.js","function":"Module._compile","line":689,"method":"_compile","native":false},{"column":10,"file":"internal/modules/cjs/loader.js","function":"Module._extensions..js","line":700,"method":".js","native":false},{"column":32,"file":"internal/modules/cjs/loader.js","function":"Module.load","line":599,"method":"load","native":false},{"column":12,"file":"internal/modules/cjs/loader.js","function":"tryModuleLoad","line":538,"method":null,"native":false},{"column":3,"file":"internal/modules/cjs/loader.js","function":"Module._load","line":530,"method":"_load","native":false},{"column":17,"file":"internal/modules/cjs/loader.js","function":"Module.require","line":637,"method":"require","native":false},{"column":18,"file":"internal/modules/cjs/helpers.js","function":"require","line":20,"method":null,"native":false},{"column":48,"file":"/home/tomer/whiteblock-mongodb/src/routes/index.js","function":"allFileNames.forEach","line":9,"method":"forEach","native":false},{"column":null,"file":null,"function":"Array.forEach","line":null,"method":"forEach","native":false},{"column":14,"file":"/home/tomer/whiteblock-mongodb/src/routes/index.js","function":null,"line":6,"method":null,"native":false},{"column":30,"file":"internal/modules/cjs/loader.js","function":"Module._compile","line":689,"method":"_compile","native":false}]}' }
+{ error:
+   /home/tomer/whiteblock-mongodb/src/models/Transaction.js:97
+       (smartContractId && )
+                           ^
+   
+   SyntaxError: Unexpected token )
+       at new Script (vm.js:74:7)
+       at createScript (vm.js:246:10)
+       at Object.runInThisContext (vm.js:298:10)
+       at Module._compile (internal/modules/cjs/loader.js:657:28)
+       at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)
+       at Module.load (internal/modules/cjs/loader.js:599:32)
+       at tryModuleLoad (internal/modules/cjs/loader.js:538:12)
+       at Function.Module._load (internal/modules/cjs/loader.js:530:3)
+       at Module.require (internal/modules/cjs/loader.js:637:17)
+       at require (internal/modules/cjs/helpers.js:20:18)
+       at Object.<anonymous> (/home/tomer/whiteblock-mongodb/src/helpers/transactions/index.js:8:21)
+       at Module._compile (internal/modules/cjs/loader.js:689:30)
+       at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)
+       at Module.load (internal/modules/cjs/loader.js:599:32)
+       at tryModuleLoad (internal/modules/cjs/loader.js:538:12)
+       at Function.Module._load (internal/modules/cjs/loader.js:530:3)
+       at Module.require (internal/modules/cjs/loader.js:637:17)
+       at require (internal/modules/cjs/helpers.js:20:18)
+       at Object.<anonymous> (/home/tomer/whiteblock-mongodb/src/db.js:10:38)
+       at Module._compile (internal/modules/cjs/loader.js:689:30)
+       at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)
+       at Module.load (internal/modules/cjs/loader.js:599:32),
+  level: 'error',
+  message:
+   'uncaughtException: Unexpected token )\n/home/tomer/whiteblock-mongodb/src/models/Transaction.js:97\n    (smartContractId && )\n                        ^\n\nSyntaxError: Unexpected token )\n    at new Script (vm.js:74:7)\n    at createScript (vm.js:246:10)\n    at Object.runInThisContext (vm.js:298:10)\n    at Module._compile (internal/modules/cjs/loader.js:657:28)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)\n    at Module.load (internal/modules/cjs/loader.js:599:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:530:3)\n    at Module.require (internal/modules/cjs/loader.js:637:17)\n    at require (internal/modules/cjs/helpers.js:20:18)\n    at Object.<anonymous> (/home/tomer/whiteblock-mongodb/src/helpers/transactions/index.js:8:21)\n    at Module._compile (internal/modules/cjs/loader.js:689:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)\n    at Module.load (internal/modules/cjs/loader.js:599:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:530:3)\n    at Module.require (internal/modules/cjs/loader.js:637:17)\n    at require (internal/modules/cjs/helpers.js:20:18)\n    at Object.<anonymous> (/home/tomer/whiteblock-mongodb/src/db.js:10:38)\n    at Module._compile (internal/modules/cjs/loader.js:689:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)\n    at Module.load (internal/modules/cjs/loader.js:599:32)',
+  stack:
+   '/home/tomer/whiteblock-mongodb/src/models/Transaction.js:97\n    (smartContractId && )\n                        ^\n\nSyntaxError: Unexpected token )\n    at new Script (vm.js:74:7)\n    at createScript (vm.js:246:10)\n    at Object.runInThisContext (vm.js:298:10)\n    at Module._compile (internal/modules/cjs/loader.js:657:28)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)\n    at Module.load (internal/modules/cjs/loader.js:599:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:530:3)\n    at Module.require (internal/modules/cjs/loader.js:637:17)\n    at require (internal/modules/cjs/helpers.js:20:18)\n    at Object.<anonymous> (/home/tomer/whiteblock-mongodb/src/helpers/transactions/index.js:8:21)\n    at Module._compile (internal/modules/cjs/loader.js:689:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)\n    at Module.load (internal/modules/cjs/loader.js:599:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:530:3)\n    at Module.require (internal/modules/cjs/loader.js:637:17)\n    at require (internal/modules/cjs/helpers.js:20:18)\n    at Object.<anonymous> (/home/tomer/whiteblock-mongodb/src/db.js:10:38)\n    at Module._compile (internal/modules/cjs/loader.js:689:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)\n    at Module.load (internal/modules/cjs/loader.js:599:32)',
+  exception: true,
+  date: 'Mon Nov 05 2018 09:20:53 GMT-0800 (Pacific Standard Time)',
+  process:
+   { pid: 22114,
+     uid: 1000,
+     gid: 1000,
+     cwd: '/home/tomer/whiteblock-mongodb',
+     execPath: '/home/tomer/.nvm/versions/node/v10.7.0/bin/node',
+     version: 'v10.7.0',
+     argv:
+      [ '/home/tomer/.nvm/versions/node/v10.7.0/bin/node',
+        '/home/tomer/whiteblock-mongodb/src/app.js' ],
+     memoryUsage:
+      { rss: 85475328,
+        heapTotal: 61648896,
+        heapUsed: 33079880,
+        external: 36561683 } },
+  os:
+   { loadavg: [ 0.90380859375, 0.724609375, 0.869140625 ],
+     uptime: 3088 },
+  trace:
+   [ { column: 7,
+       file: 'vm.js',
+       function: 'new Script',
+       line: 74,
+       method: null,
+       native: false },
+     { column: 10,
+       file: 'vm.js',
+       function: 'createScript',
+       line: 246,
+       method: null,
+       native: false },
+     { column: 10,
+       file: 'vm.js',
+       function: 'Object.runInThisContext',
+       line: 298,
+       method: 'runInThisContext',
+       native: false },
+     { column: 28,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'Module._compile',
+       line: 657,
+       method: '_compile',
+       native: false },
+     { column: 10,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'Module._extensions..js',
+       line: 700,
+       method: '.js',
+       native: false },
+     { column: 32,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'Module.load',
+       line: 599,
+       method: 'load',
+       native: false },
+     { column: 12,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'tryModuleLoad',
+       line: 538,
+       method: null,
+       native: false },
+     { column: 3,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'Module._load',
+       line: 530,
+       method: '_load',
+       native: false },
+     { column: 17,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'Module.require',
+       line: 637,
+       method: 'require',
+       native: false },
+     { column: 18,
+       file: 'internal/modules/cjs/helpers.js',
+       function: 'require',
+       line: 20,
+       method: null,
+       native: false },
+     { column: 21,
+       file:
+        '/home/tomer/whiteblock-mongodb/src/helpers/transactions/index.js',
+       function: null,
+       line: 8,
+       method: null,
+       native: false },
+     { column: 30,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'Module._compile',
+       line: 689,
+       method: '_compile',
+       native: false },
+     { column: 10,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'Module._extensions..js',
+       line: 700,
+       method: '.js',
+       native: false },
+     { column: 32,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'Module.load',
+       line: 599,
+       method: 'load',
+       native: false },
+     { column: 12,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'tryModuleLoad',
+       line: 538,
+       method: null,
+       native: false },
+     { column: 3,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'Module._load',
+       line: 530,
+       method: '_load',
+       native: false },
+     { column: 17,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'Module.require',
+       line: 637,
+       method: 'require',
+       native: false },
+     { column: 18,
+       file: 'internal/modules/cjs/helpers.js',
+       function: 'require',
+       line: 20,
+       method: null,
+       native: false },
+     { column: 38,
+       file: '/home/tomer/whiteblock-mongodb/src/db.js',
+       function: null,
+       line: 10,
+       method: null,
+       native: false },
+     { column: 30,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'Module._compile',
+       line: 689,
+       method: '_compile',
+       native: false },
+     { column: 10,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'Module._extensions..js',
+       line: 700,
+       method: '.js',
+       native: false },
+     { column: 32,
+       file: 'internal/modules/cjs/loader.js',
+       function: 'Module.load',
+       line: 599,
+       method: 'load',
+       native: false } ],
+  timestamp: '2018-11-05T17:20:53.877Z',
+  [Symbol(level)]: 'error',
+  [Symbol(message)]:
+   '{"error":{},"level":"error","message":"uncaughtException: Unexpected token )\\n/home/tomer/whiteblock-mongodb/src/models/Transaction.js:97\\n    (smartContractId && )\\n                        ^\\n\\nSyntaxError: Unexpected token )\\n    at new Script (vm.js:74:7)\\n    at createScript (vm.js:246:10)\\n    at Object.runInThisContext (vm.js:298:10)\\n    at Module._compile (internal/modules/cjs/loader.js:657:28)\\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)\\n    at Module.load (internal/modules/cjs/loader.js:599:32)\\n    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)\\n    at Function.Module._load (internal/modules/cjs/loader.js:530:3)\\n    at Module.require (internal/modules/cjs/loader.js:637:17)\\n    at require (internal/modules/cjs/helpers.js:20:18)\\n    at Object.<anonymous> (/home/tomer/whiteblock-mongodb/src/helpers/transactions/index.js:8:21)\\n    at Module._compile (internal/modules/cjs/loader.js:689:30)\\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)\\n    at Module.load (internal/modules/cjs/loader.js:599:32)\\n    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)\\n    at Function.Module._load (internal/modules/cjs/loader.js:530:3)\\n    at Module.require (internal/modules/cjs/loader.js:637:17)\\n    at require (internal/modules/cjs/helpers.js:20:18)\\n    at Object.<anonymous> (/home/tomer/whiteblock-mongodb/src/db.js:10:38)\\n    at Module._compile (internal/modules/cjs/loader.js:689:30)\\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)\\n    at Module.load (internal/modules/cjs/loader.js:599:32)","stack":"/home/tomer/whiteblock-mongodb/src/models/Transaction.js:97\\n    (smartContractId && )\\n                        ^\\n\\nSyntaxError: Unexpected token )\\n    at new Script (vm.js:74:7)\\n    at createScript (vm.js:246:10)\\n    at Object.runInThisContext (vm.js:298:10)\\n    at Module._compile (internal/modules/cjs/loader.js:657:28)\\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)\\n    at Module.load (internal/modules/cjs/loader.js:599:32)\\n    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)\\n    at Function.Module._load (internal/modules/cjs/loader.js:530:3)\\n    at Module.require (internal/modules/cjs/loader.js:637:17)\\n    at require (internal/modules/cjs/helpers.js:20:18)\\n    at Object.<anonymous> (/home/tomer/whiteblock-mongodb/src/helpers/transactions/index.js:8:21)\\n    at Module._compile (internal/modules/cjs/loader.js:689:30)\\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)\\n    at Module.load (internal/modules/cjs/loader.js:599:32)\\n    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)\\n    at Function.Module._load (internal/modules/cjs/loader.js:530:3)\\n    at Module.require (internal/modules/cjs/loader.js:637:17)\\n    at require (internal/modules/cjs/helpers.js:20:18)\\n    at Object.<anonymous> (/home/tomer/whiteblock-mongodb/src/db.js:10:38)\\n    at Module._compile (internal/modules/cjs/loader.js:689:30)\\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)\\n    at Module.load (internal/modules/cjs/loader.js:599:32)","exception":true,"date":"Mon Nov 05 2018 09:20:53 GMT-0800 (Pacific Standard Time)","process":{"pid":22114,"uid":1000,"gid":1000,"cwd":"/home/tomer/whiteblock-mongodb","execPath":"/home/tomer/.nvm/versions/node/v10.7.0/bin/node","version":"v10.7.0","argv":["/home/tomer/.nvm/versions/node/v10.7.0/bin/node","/home/tomer/whiteblock-mongodb/src/app.js"],"memoryUsage":{"rss":85475328,"heapTotal":61648896,"heapUsed":33079880,"external":36561683}},"os":{"loadavg":[0.90380859375,0.724609375,0.869140625],"uptime":3088},"trace":[{"column":7,"file":"vm.js","function":"new Script","line":74,"method":null,"native":false},{"column":10,"file":"vm.js","function":"createScript","line":246,"method":null,"native":false},{"column":10,"file":"vm.js","function":"Object.runInThisContext","line":298,"method":"runInThisContext","native":false},{"column":28,"file":"internal/modules/cjs/loader.js","function":"Module._compile","line":657,"method":"_compile","native":false},{"column":10,"file":"internal/modules/cjs/loader.js","function":"Module._extensions..js","line":700,"method":".js","native":false},{"column":32,"file":"internal/modules/cjs/loader.js","function":"Module.load","line":599,"method":"load","native":false},{"column":12,"file":"internal/modules/cjs/loader.js","function":"tryModuleLoad","line":538,"method":null,"native":false},{"column":3,"file":"internal/modules/cjs/loader.js","function":"Module._load","line":530,"method":"_load","native":false},{"column":17,"file":"internal/modules/cjs/loader.js","function":"Module.require","line":637,"method":"require","native":false},{"column":18,"file":"internal/modules/cjs/helpers.js","function":"require","line":20,"method":null,"native":false},{"column":21,"file":"/home/tomer/whiteblock-mongodb/src/helpers/transactions/index.js","function":null,"line":8,"method":null,"native":false},{"column":30,"file":"internal/modules/cjs/loader.js","function":"Module._compile","line":689,"method":"_compile","native":false},{"column":10,"file":"internal/modules/cjs/loader.js","function":"Module._extensions..js","line":700,"method":".js","native":false},{"column":32,"file":"internal/modules/cjs/loader.js","function":"Module.load","line":599,"method":"load","native":false},{"column":12,"file":"internal/modules/cjs/loader.js","function":"tryModuleLoad","line":538,"method":null,"native":false},{"column":3,"file":"internal/modules/cjs/loader.js","function":"Module._load","line":530,"method":"_load","native":false},{"column":17,"file":"internal/modules/cjs/loader.js","function":"Module.require","line":637,"method":"require","native":false},{"column":18,"file":"internal/modules/cjs/helpers.js","function":"require","line":20,"method":null,"native":false},{"column":38,"file":"/home/tomer/whiteblock-mongodb/src/db.js","function":null,"line":10,"method":null,"native":false},{"column":30,"file":"internal/modules/cjs/loader.js","function":"Module._compile","line":689,"method":"_compile","native":false},{"column":10,"file":"internal/modules/cjs/loader.js","function":"Module._extensions..js","line":700,"method":".js","native":false},{"column":32,"file":"internal/modules/cjs/loader.js","function":"Module.load","line":599,"method":"load","native":false}]}' }

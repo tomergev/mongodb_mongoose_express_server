@@ -39,6 +39,17 @@ module.exports = {
     }
   },
 
+  async findOne(req, res, next) {
+    try {
+      const { blockHash } = req.params;
+      const { properties } = req.query;
+      const block = await Block.findOne({ blockHash }, properties);
+      res.json({ block });
+    } catch (err) {
+      next(err);
+    }
+  },
+
   async startBlockListener(req, res, next) {
     try {
       ethersNewBlockListener(formatBlockData);

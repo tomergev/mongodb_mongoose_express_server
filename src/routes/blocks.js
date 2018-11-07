@@ -7,6 +7,9 @@ const blockController = require('../controllers/blocks');
 router.route('/')
   .get(blockController.get);
 
+router.route('/:blockHash')
+  .get(blockController.findOne);
+
 router.route('/listener')
   .post(blockController.startBlockListener);
 

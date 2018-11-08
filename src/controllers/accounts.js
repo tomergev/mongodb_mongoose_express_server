@@ -1,10 +1,10 @@
-const Account = require('../models/Account');
-const { createAllAccounts } = require('../helpers/accounts/');
-const { converisionRate } = require('../services/cryptoCompare/');
 const {
   fromWei,
   getBalance,
 } = require('../services/web3/');
+const Account = require('../models/Account');
+const { createAllAccounts } = require('../helpers/accounts/');
+const { converisionRate } = require('../services/cryptoCompare/');
 
 module.exports = {
   async get(req, res, next) {
